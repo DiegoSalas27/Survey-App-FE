@@ -1,5 +1,4 @@
 import { HttpPostClientSpy } from '@data/test/mock-http-client'
-import { url } from 'inspector'
 import { RemoteAuthentication } from './remote-authentication'
 
 type SutTypes = {
