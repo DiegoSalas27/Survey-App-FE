@@ -24,6 +24,7 @@
         "eol-last": "off",
         "no-multi-spaces": "off",
         "@typescript-eslint/strict-boolean-expressions": "off",
+        "@typescript-eslint/no-non-null-assertion": "off",
         "comma-dangle": "off",
         "@typescript-eslint/explicit-function-return-type": "off",
         "@typescript-eslint/method-signature-style": "off",
