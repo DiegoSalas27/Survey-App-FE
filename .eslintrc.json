@@ -1,13 +1,11 @@
 {
-  //   "settings": {
-  //     "react": {
-  //       "version": "detect" // solves eslint warnings problems
-  //     }
-  //   },
-   // we make react imports in all of our tsx files, this plugin will get rid of the warning that we are not using react 
-   // for anything ("plugin:react/recommended")
-  "extends": ["standard-with-typescript"],
-//   "plugins": ["react"],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "extends": ["standard-with-typescript", "plugin:react/recommended"],
+  "plugins": ["react"],
   "parserOptions": {
     "project": "./tsconfig.json"
   },
@@ -30,8 +28,8 @@
         "@typescript-eslint/no-misused-promises": "off",
         "node/no-path-concat": "off",
         "@typescript-eslint/consistent-type-definitions": "off",
-        // "react/jsx-uses-react": "error",
-        // "react/jsx-uses-vars": "error"
+        "react/jsx-uses-react": "error",
+        "react/jsx-uses-vars": "error"
       }
     }
   ]

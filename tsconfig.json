@@ -17,10 +17,10 @@
       "@domain/*": ["domain/*"],
       "@data/*": ["data/*"],
       "@infrastructure/*": ["infrastructure/*"],
-      // "@main/*": ["main/*"],
+      "@main/*": ["main/*"],
       // "@validation/*": ["validation/*"]
     },
-    "strictNullChecks": false,
+    "strictNullChecks": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "module": "esnext",
