@@ -9,6 +9,9 @@
   "parserOptions": {
     "project": "./tsconfig.json"
   },
+  "rules": {
+    "react/prop-types": "off"
+  },
   "overrides": [
     {
       "files": ["*.ts"],

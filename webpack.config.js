@@ -5,7 +5,7 @@ module.exports = {
   mode: 'development',
   entry: './src/main/index.tsx',
   output: {
-    path: path.resolve(__dirname, 'public/js'),
+    path: path.join(__dirname, 'public/js'),
     publicPath: '/public/js',
     filename: 'bundle.js'
   },
@@ -15,42 +15,46 @@ module.exports = {
       '@domain': path.join(__dirname, 'src/domain'),
       '@data': path.join(__dirname, 'src/data'),
       '@infrastructure': path.join(__dirname, 'src/infrastructure'),
+      '@presentation': path.join(__dirname, 'src/presentation'),
       '@main': path.join(__dirname, 'src/main')
-    },
-    module: {
-      rules: [{
+    }
+  },
+  module: {
+    rules: [
+      {
         test: /\.ts(x?)$/,
         loader: 'ts-loader',
         exclude: /node_modules/
-      }, {
+      },
+      {
         test: /\.scss$/,
-        use: [{
-          loader: 'style-loader'
-        }, {
-          loader: 'css-loader',
-          options: {
-            modules: true
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true
+            }
+          },
+          {
+            loader: 'sass-loader'
           }
-        }, {
-          loader: 'sass-loader'
-        }]
-      }]
-    },
-    devServer: {
-      // generate the bundle file in memory and runs the server
-      contentBase: './public',
-      writeToDisk: true,
-      historyApiFallback: true
-      // devServer executes the root of our project and only knows that route, then we create new routes login, signup
-      // historyApiFallback allows react to map the right route (react-router-dom)
-    },
-    externals: {
-      // this will allow to not include cdn react and react-dom scripts in our bundle as they are huge
-      react: 'React',
-      'react-dom': 'ReactDOM'
-    }, // everything within externals is not going to be included in our bundle
-    plugins: [
-      new CleanWebpackPlugin()
+        ]
+      }
     ]
-  }
+  },
+  devServer: {
+    static: './public',
+    devMiddleware: {
+      writeToDisk: true
+    },
+    historyApiFallback: true
+  },
+  externals: {
+    react: 'React',
+    'react-dom': 'ReactDOM'
+  },
+  plugins: [new CleanWebpackPlugin()]
 }
