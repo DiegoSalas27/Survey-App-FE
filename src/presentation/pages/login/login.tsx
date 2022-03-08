@@ -26,11 +26,19 @@ const Login: React.FC<Props> = ({ validation }) => {
     })
   }, [state.email, state.password])
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+    e.preventDefault()
+    setState({
+      ...state,
+      isLoading: true
+    })
+  }
+
   return (
     <div className={Styles.login}>
       <Header />
       <Context.Provider value={{ state, setState } as any}>
-        <form className={Styles.form}>
+        <form className={Styles.form} onSubmit={handleSubmit}>
           <h2>Login</h2>
           <Input type="email" name="email" placeholder="Enter your email" />
           <Input type="password" name="password" placeholder="Enter your password" />
