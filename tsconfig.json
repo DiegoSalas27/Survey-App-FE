@@ -20,7 +20,7 @@
       "@main/*": ["main/*"],
       // "@validation/*": ["validation/*"]
     },
-    "strictNullChecks": true,
+    "strictNullChecks": false,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "module": "esnext",
