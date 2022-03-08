@@ -18,7 +18,7 @@
       "@data/*": ["data/*"],
       "@infrastructure/*": ["infrastructure/*"],
       "@main/*": ["main/*"],
-      // "@validation/*": ["validation/*"]
+      "@validation/*": ["validation/*"]
     },
     "strictNullChecks": false,
     "forceConsistentCasingInFileNames": true,
