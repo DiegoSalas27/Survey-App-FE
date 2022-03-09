@@ -1,3 +1,26 @@
+# [1.3.0](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/compare/v1.2.0...v1.3.0) (2022-03-09)
+
+
+### Bug Fixes
+
+* ensure EmailValidation allows empty value ([74859ca](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/74859caef3ec5e765757432a766c14cb1c7e2a64))
+
+
+### Features
+
+* ensure EmailValidation returns error if email is invalid ([5270af0](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/5270af0ebda3ae504abac8146481f45daf4f73b0))
+* ensure EmailValidation returns falsy if email is valid ([c3793e0](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/c3793e001426438e01310df7355f7fe5b9c26379))
+* ensure MinLengthValidation returns error if value is invalid ([3d8a5a8](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/3d8a5a83da2fe066f8c9a500f0fcec9f3cd573a2))
+* ensure MinLengthValidation returns falsy if value is valid ([91700a7](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/91700a7b4158dd7b9617c0401f28e05d0c3a9bc7))
+* ensure RequiredFiledValidation returns error if field is empty ([b7fa5c8](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/b7fa5c8d9dd268170b67b3920997fb306e678265))
+* ensure RequiredFiledValidation returns falsy if field is not empty ([6dfd0c6](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/6dfd0c670278edd640aa048ca97e0993395aaf7d))
+* ensure ValidationBuilder has a min-length  helper ([fb8a334](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/fb8a3345ef21c4dc16ae07e02ac4fb361d91e638))
+* ensure ValidationBuilder has a required helper ([8307d33](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/8307d331c116df6274b39079f57dc6a4a1d97597))
+* ensure ValidationBuilder has an email helper ([e6d6e8b](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/e6d6e8b2a8e298f096e629ee5e2845a80f39c475))
+* ensure ValidationComposite returns error if any validation fails ([a033cce](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/a033cce0d15e1b42c876a06fc60ce34a214ab5bf))
+
+
+
 # [1.2.0](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/compare/v1.1.0...v1.2.0) (2022-03-08)
 
 
