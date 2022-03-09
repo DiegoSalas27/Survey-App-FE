@@ -9,8 +9,8 @@ module.exports = {
     '@data/(.*)$': '<rootDir>/src/data/$1',
     '@domain/(.*)$': '<rootDir>/src/domain/$1',
     '@main/(.*)$': '<rootDir>/src/main/$1',
-    '\\.scss$': 'identity-obj-proxy'
-    // '@validation/(.*)$': '<rootDir>/src/validation/$1'
+    '\\.scss$': 'identity-obj-proxy',
+    '@validation/(.*)$': '<rootDir>/src/validation/$1'
   },
   transform: {
     '.+\\.(ts|tsx)$': 'ts-jest'
