@@ -1,5 +1,4 @@
 import React, { useContext } from 'react'
-import Styles from './input-styles.scss'
 import Context from '@presentation/context/form/form-context'
 
 type Props = {
@@ -12,7 +11,6 @@ const SubmitButton: React.FC<Props> = ({ text }) => {
   return (
     <button
       data-testid="submit"
-      className={Styles.submit}
       disabled={state.isFormInvalid}
       type="submit"
     >
