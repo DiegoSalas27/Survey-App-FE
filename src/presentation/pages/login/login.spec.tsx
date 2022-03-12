@@ -6,7 +6,6 @@ import { InvalidCredentialsError } from '@domain/errors'
 import faker from '@faker-js/faker'
 import { ValidationStub, AuthenticationSpy, SaveAccessTokenMock, Helper } from '@presentation/test'
 import { cleanup, fireEvent, render, RenderResult, waitFor } from '@testing-library/react'
-import { testElementText } from '@presentation/test/form-helper'
 
 type SutTypes = {
   sut: RenderResult
@@ -131,7 +130,7 @@ describe('Login Component', () => {
     const error = new InvalidCredentialsError()
     jest.spyOn(authenticationSpy, 'auth').mockRejectedValueOnce(error)
     await simulateValidSubmit(sut)
-    testElementText(sut, 'main-error', error.message)
+    Helper.testElementText(sut, 'main-error', error.message)
     Helper.testChildCount(sut, 'error-wrap', 1)
   })
 
@@ -148,7 +147,7 @@ describe('Login Component', () => {
     const error = new InvalidCredentialsError()
     jest.spyOn(saveAccessTokenMock, 'save').mockReturnValueOnce(Promise.reject(error))
     await simulateValidSubmit(sut)
-    testElementText(sut, 'main-error', error.message)
+    Helper.testElementText(sut, 'main-error', error.message)
     Helper.testChildCount(sut, 'error-wrap', 1)
   })
 
