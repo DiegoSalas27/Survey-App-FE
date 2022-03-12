@@ -1,4 +1,4 @@
-import { useHistory } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { AddAccount, SaveAccessToken } from '@domain/usecases'
 import { Footer, FormStatus, Header, Input } from '@presentation/components'
 import Context from '@presentation/context/form/form-context'
@@ -97,7 +97,7 @@ const Signup: React.FC<Props> = ({ validation, addAccount, saveAccessToken }) =>
           >
             Register
           </button>
-          <span className={Styles.link}>Log in</span>
+          <Link data-testid="login" to="/login" className={Styles.link}>Log in</Link>
           <FormStatus />
         </form>
       </Context.Provider>
