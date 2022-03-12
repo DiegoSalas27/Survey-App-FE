@@ -4,14 +4,15 @@ import { Input, FormStatus, Footer, Header } from '@presentation/components'
 import Context from '@presentation/context/form/form-context'
 import Styles from './login-styles.scss'
 import { Validation } from '@presentation/protocols/validation'
-import { Authentication } from '@domain/usecases'
+import { Authentication, SaveAccessToken } from '@domain/usecases'
 
 type Props = {
   validation: Validation | undefined
   authentication: Authentication | undefined
+  saveAccessToken: SaveAccessToken | undefined
 }
 
-const Login: React.FC<Props> = ({ validation, authentication }) => {
+const Login: React.FC<Props> = ({ validation, authentication, saveAccessToken }) => {
   const history = useHistory()
   const [state, setState] = useState({
     isLoading: false,
@@ -39,7 +40,7 @@ const Login: React.FC<Props> = ({ validation, authentication }) => {
         isLoading: true
       })
       const account = await authentication.auth({ email: state.email, password: state.password })
-      localStorage.setItem('accessToken', account.accessToken)
+      await saveAccessToken.save(account.accessToken)
       history.replace('/')
     } catch (error: any) {
       setState({
@@ -66,7 +67,9 @@ const Login: React.FC<Props> = ({ validation, authentication }) => {
           >
             Login
           </button>
-          <Link data-testid="signup" to="/signup" className={Styles.link}>Create an account</Link>
+          <Link data-testid="signup" to="/signup" className={Styles.link}>
+            Create an account
+          </Link>
           <FormStatus />
         </form>
       </Context.Provider>
