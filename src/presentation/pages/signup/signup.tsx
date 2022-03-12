@@ -29,10 +29,12 @@ const Signup: React.FC<Props> = ({ validation, addAccount, saveAccessToken }) =>
   })
 
   useEffect(() => {
-    const nameError = validation.validate('name', state.name)
-    const emailError = validation.validate('name', state.email)
-    const passwordError = validation.validate('name', state.password)
-    const passwordConfirmError = validation.validate('name', state.passwordConfirm)
+    const { name, email, password, passwordConfirm } = state
+    const formData = { name, email, password, passwordConfirm }
+    const nameError = validation.validate('name', formData)
+    const emailError = validation.validate('name', formData)
+    const passwordError = validation.validate('name', formData)
+    const passwordConfirmError = validation.validate('name', formData)
     setState({
       ...state,
       nameError,
@@ -84,7 +86,7 @@ const Signup: React.FC<Props> = ({ validation, addAccount, saveAccessToken }) =>
           <Input type="email" name="email" placeholder="Enter your email" />
           <Input type="password" name="password" placeholder="Enter your password" />
           <Input type="password" name="passwordConfirm" placeholder="Reenter password" />
-          <SubmitButton text='Register' />
+          <SubmitButton text="Register" />
           <Link data-testid="login-link" replace to="/login" className={Styles.link}>
             Log in
           </Link>
