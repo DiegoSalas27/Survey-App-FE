@@ -1,5 +1,5 @@
 export class InvalidFieldError extends Error {
-  constructor(fieldName: string) {
+  constructor(fieldName?: string) {
     super(`${fieldName} is required`)
     this.name = 'InvalidFieldError'
   }
