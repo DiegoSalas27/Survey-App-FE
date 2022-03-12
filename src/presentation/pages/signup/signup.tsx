@@ -32,9 +32,9 @@ const Signup: React.FC<Props> = ({ validation, addAccount, saveAccessToken }) =>
     const { name, email, password, passwordConfirm } = state
     const formData = { name, email, password, passwordConfirm }
     const nameError = validation.validate('name', formData)
-    const emailError = validation.validate('name', formData)
-    const passwordError = validation.validate('name', formData)
-    const passwordConfirmError = validation.validate('name', formData)
+    const emailError = validation.validate('email', formData)
+    const passwordError = validation.validate('password', formData)
+    const passwordConfirmError = validation.validate('passwordConfirm', formData)
     setState({
       ...state,
       nameError,
@@ -43,7 +43,7 @@ const Signup: React.FC<Props> = ({ validation, addAccount, saveAccessToken }) =>
       passwordConfirmError,
       isFormInvalid: !!emailError || !!emailError || !!passwordError || !!passwordConfirmError
     })
-  }, [state.nameError, state.email, state.password, state.passwordConfirm])
+  }, [state.name, state.email, state.password, state.passwordConfirm])
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault()
@@ -82,7 +82,7 @@ const Signup: React.FC<Props> = ({ validation, addAccount, saveAccessToken }) =>
       <Context.Provider value={{ state, setState }}>
         <form data-testid="form" className={Styles.form} onSubmit={handleSubmit}>
           <h2>Sign up</h2>
-          <Input type="name" name="name" placeholder="Enter your name" />
+          <Input type="text" name="name" placeholder="Enter your name" />
           <Input type="email" name="email" placeholder="Enter your email" />
           <Input type="password" name="password" placeholder="Enter your password" />
           <Input type="password" name="passwordConfirm" placeholder="Reenter password" />

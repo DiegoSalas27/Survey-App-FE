@@ -9,7 +9,7 @@ describe('SingUpValidation Factory', () => {
         ...Builder.field('name').required().min(5).build(),
         ...Builder.field('email').required().email().build(),
         ...Builder.field('password').required().min(5).build(),
-        ...Builder.field('passwordConfirm').required().min(5).build()
+        ...Builder.field('passwordConfirm').required().sameAs('password').build()
       ])
     )
   })
