@@ -97,7 +97,7 @@ const Signup: React.FC<Props> = ({ validation, addAccount, saveAccessToken }) =>
           >
             Register
           </button>
-          <Link data-testid="login" to="/login" className={Styles.link}>Log in</Link>
+          <Link data-testid="login-link" replace to="/login" className={Styles.link}>Log in</Link>
           <FormStatus />
         </form>
       </Context.Provider>
