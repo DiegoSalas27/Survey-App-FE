@@ -1,3 +1,22 @@
+# [1.5.0](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/compare/v1.4.0...v1.5.0) (2022-03-12)
+
+
+### Bug Fixes
+
+* change webpack env var to use JSON.stringify ([115092d](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/115092d1db63ed254c127e897dfd6f3e581c0180))
+
+
+### Features
+
+* add SaveAccessToken usecase ([9e6e351](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/9e6e351630490548c16f57a93b05ce2785cdb9b1))
+* added continuous integration with travis ci ([7ab1eeb](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/7ab1eeb58e3ed3734f54a5f6e8bad408349599c8))
+* change login composition to add SaveAccessToken ([40f8886](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/40f8886aff92e3a64a15371a05592ac8f50701aa))
+* ensure LocalAccessToken calls SetStorage with correct value ([8fe4778](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/8fe47788b456114b54ecfb64a6df93d9f0a677b3))
+* ensure LocalStorageAdapter calls localStorage with correct values ([d313500](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/d313500b370e6bace22f5a2611ca58f65225f27b))
+* ensure Login calls SaveAccessToken with correct values ([9c4a3fd](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/9c4a3fd58fb8505f9e978bf61823c96b971cc729))
+
+
+
 # [1.4.0](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/compare/v1.3.0...v1.4.0) (2022-03-12)
 
 
