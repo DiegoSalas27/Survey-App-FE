@@ -33,7 +33,7 @@ describe('Signup Component', () => {
     Helper.testButtonIsDisabled(sut, 'submit', true)
     Helper.testStatusForField(sut, 'name', validationError)
     Helper.testStatusForField(sut, 'email', validationError)
-    Helper.testStatusForField(sut, 'password', 'Required field')
+    Helper.testStatusForField(sut, 'password', validationError)
     Helper.testStatusForField(sut, 'passwordConfirm', 'Required field')
   })
 
