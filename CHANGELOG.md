@@ -1,3 +1,18 @@
+# [1.4.0](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/compare/v1.3.0...v1.4.0) (2022-03-12)
+
+
+### Bug Fixes
+
+* change AxiosHttpClient to handle exceptions ([863ebbc](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/863ebbcceb78702951099a84f1c89f208689af03))
+
+
+### Features
+
+* add env var to API URL ([3408fe7](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/3408fe724ed65ce41e9545a60bf21d8ecc335516))
+* add Login composition ([8af0a00](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/8af0a00086f99e6ef5c2f5a9879e05d031571c2f))
+
+
+
 # [1.3.0](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/compare/v1.2.0...v1.3.0) (2022-03-09)
 
 
