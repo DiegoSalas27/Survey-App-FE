@@ -1,4 +1,5 @@
 const path = require('path')
+const { DefinePlugin } = require('webpack')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = {
@@ -16,7 +17,8 @@ module.exports = {
       '@data': path.join(__dirname, 'src/data'),
       '@infrastructure': path.join(__dirname, 'src/infrastructure'),
       '@presentation': path.join(__dirname, 'src/presentation'),
-      '@main': path.join(__dirname, 'src/main')
+      '@main': path.join(__dirname, 'src/main'),
+      '@validation': path.join(__dirname, 'src/validation')
     }
   },
   module: {
@@ -56,5 +58,10 @@ module.exports = {
     react: 'React',
     'react-dom': 'ReactDOM'
   },
-  plugins: [new CleanWebpackPlugin()]
+  plugins: [
+    new CleanWebpackPlugin(),
+    new DefinePlugin({
+      'process.env.API_URL': 'https://clean-node-api-dsn.herokuapp.com/api'
+    })
+  ]
 }
