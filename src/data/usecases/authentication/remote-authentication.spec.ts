@@ -1,7 +1,7 @@
+import { HttpPostClientSpy } from '@data/test'
 import faker from '@faker-js/faker'
 import { RemoteAuthentication } from './remote-authentication'
 import {
-  HttpPostClientSpy,
   AuthenticationParams,
   AccountModel,
   mockAuthentication,

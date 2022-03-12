@@ -1,5 +1,5 @@
 export * from '@faker-js/faker'
-export * from '@data/test/mock-http-client'
+export * from '@data/test/mock-http'
 export * from './remote-authentication'
 export * from '@domain/test/mock-account'
 export * from '@domain/errors/invalid-credentials-error'
