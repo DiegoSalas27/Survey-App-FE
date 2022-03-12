@@ -12,6 +12,7 @@ const Signup: React.FC<Props> = ({ validation }) => {
   const [state, setState] = useState({
     isLoading: false,
     name: '',
+    email: '',
     nameError: 'Required field',
     emailError: 'Required field',
     passwordError: 'Required field',
@@ -22,9 +23,10 @@ const Signup: React.FC<Props> = ({ validation }) => {
   useEffect(() => {
     setState({
       ...state,
-      nameError: validation.validate('name', state.name)
+      nameError: validation.validate('name', state.name),
+      emailError: validation.validate('name', state.email)
     })
-  }, [state.nameError])
+  }, [state.nameError, state.email])
 
   return (
     <div className={Styles.signup}>
