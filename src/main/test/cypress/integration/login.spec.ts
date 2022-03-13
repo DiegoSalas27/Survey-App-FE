@@ -8,9 +8,13 @@ import {
   mockUnexpectedError
 } from '../support/login-mocks'
 
-const simulateValidSubmit = (): void => {
+const populateFields = (): void => {
   cy.getByTestId('email').focus().type(faker.internet.email())
   cy.getByTestId('password').focus().type(faker.random.alphaNumeric(6))
+}
+
+const simulateValidSubmit = (): void => {
+  populateFields()
   cy.getByTestId('submit').click()
 }
 
@@ -113,8 +117,7 @@ describe('login', () => {
 
   it('Should prevent multiple submits', () => {
     mockOk()
-    cy.getByTestId('email').focus().type(faker.internet.email())
-    cy.getByTestId('password').focus().type(faker.random.alphaNumeric(6))
+    populateFields()
     cy.getByTestId('submit').dblclick()
 
     cy.get('@request.all').should('have.length', 1)
