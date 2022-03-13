@@ -1,7 +1,7 @@
 import faker from '@faker-js/faker'
 import { testInputStatus } from '../support/form-helper'
 import { testMainError, testUrl } from '../support/http-mocks'
-import { mockEmailInUseError } from '../support/signup-mocks'
+import { mockEmailInUseError, mockUnexpectedError } from '../support/signup-mocks'
 
 const simulateValidSubmit = (): void => {
   cy.getByTestId('name').focus().type(faker.name.findName())
@@ -68,6 +68,21 @@ describe('SignUp', () => {
 
     cy.wait('@request').then(res => {
       testMainError('Email already in use')
+      testUrl('/signup')
+    })
+  })
+
+  it('Should present error UnexpectedError on 400', () => {
+    mockUnexpectedError()
+    simulateValidSubmit()
+    cy.getByTestId('error-wrap')
+      .getByTestId('spinner')
+      .should('exist')
+      .getByTestId('main-error')
+      .should('not.exist')
+
+    cy.wait('@request').then(res => {
+      testMainError('An error has occurred. Please try again.')
       testUrl('/signup')
     })
   })
