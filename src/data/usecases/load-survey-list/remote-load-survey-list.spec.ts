@@ -1,4 +1,5 @@
 import { SurveyModel } from '@domain/models'
+import { mockSurveyListModel } from '@domain/test'
 import faker from '@faker-js/faker'
 import {
   HttpGetClientSpy,
@@ -49,5 +50,13 @@ describe('RemoteLoadSurveyList', () => {
     httpGetClientSpy.response = { statusCode: HttpStatusCode.serverError }
     const promise = sut.loadAll()
     await expect(promise).rejects.toThrow(new UnexpectedError())
+  })
+
+  test('Should return a list of SurveyModel if HttpGetClient returns 200', async () => {
+    const { httpGetClientSpy, sut } = makeSut()
+    const httpResult = mockSurveyListModel()
+    httpGetClientSpy.response = { statusCode: HttpStatusCode.ok, body: httpResult }
+    const surveyList = await sut.loadAll()
+    expect(surveyList).toEqual(httpResult)
   })
 })
