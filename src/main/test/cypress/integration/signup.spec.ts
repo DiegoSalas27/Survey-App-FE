@@ -31,4 +31,18 @@ describe('SignUp', () => {
     cy.getByTestId('submit').should('have.attr', 'disabled')
     cy.getByTestId('error-wrap').should('not.have.descendants')
   })
+
+  it('Should present valid state if form is valid', () => {
+    cy.getByTestId('name').focus().type(faker.name.findName())
+    testInputStatus('name-status', "It's all good", '😃')
+    cy.getByTestId('email').focus().type(faker.internet.email())
+    testInputStatus('email-status', "It's all good", '😃')
+    const pwd = faker.random.alphaNumeric(6)
+    cy.getByTestId('password').focus().type(pwd)
+    testInputStatus('password-status', "It's all good", '😃')
+    cy.getByTestId('passwordConfirm').focus().type(pwd)
+    testInputStatus('passwordConfirm-status', "It's all good", '😃')
+    cy.getByTestId('submit').should('not.have.attr', 'disabled')
+    cy.getByTestId('error-wrap').should('not.have.descendants')
+  })
 })
