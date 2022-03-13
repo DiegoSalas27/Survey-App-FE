@@ -1,5 +1,16 @@
 import faker from '@faker-js/faker'
 import { testInputStatus } from '../support/form-helper'
+import { testMainError, testUrl } from '../support/http-mocks'
+import { mockEmailInUseError } from '../support/signup-mocks'
+
+const simulateValidSubmit = (): void => {
+  cy.getByTestId('name').focus().type(faker.name.findName())
+  cy.getByTestId('email').focus().type(faker.internet.email())
+  const pwd = faker.random.alphaNumeric(6)
+  cy.getByTestId('password').focus().type(pwd)
+  cy.getByTestId('passwordConfirm').focus().type(pwd)
+  cy.getByTestId('submit').click()
+}
 
 describe('SignUp', () => {
   beforeEach(() => {
@@ -44,5 +55,20 @@ describe('SignUp', () => {
     testInputStatus('passwordConfirm-status', "It's all good", '😃')
     cy.getByTestId('submit').should('not.have.attr', 'disabled')
     cy.getByTestId('error-wrap').should('not.have.descendants')
+  })
+
+  it('Should present error EmailInUseError on 403', () => {
+    mockEmailInUseError()
+    simulateValidSubmit()
+    cy.getByTestId('error-wrap')
+      .getByTestId('spinner')
+      .should('exist')
+      .getByTestId('main-error')
+      .should('not.exist')
+
+    cy.wait('@request').then(res => {
+      testMainError('Email already in use')
+      testUrl('/signup')
+    })
   })
 })

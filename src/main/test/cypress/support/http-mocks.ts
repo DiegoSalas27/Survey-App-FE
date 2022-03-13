@@ -20,6 +20,14 @@ export const mockUnexpectedError = (
   }).as('request')
 }
 
+export const mockEmailInUseError = (url: RegExp): void => {
+  cy.intercept('POST', url, req => {
+    req.reply(res => {
+      res.send(403, res.body)
+    })
+  }).as('request')
+}
+
 export const mockOk = (
   url: RegExp,
   method: 'POST' | 'GET' | 'PUT' | 'PATCH',
