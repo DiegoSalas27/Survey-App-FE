@@ -94,7 +94,7 @@ describe('login', () => {
     })
   })
 
-  it('Should present error UnexpectedErrorif invalid data is returned', () => {
+  it('Should present error UnexpectedError if invalid data is returned', () => {
     cy.intercept('POST', /login/, req => {
       req.reply(res => {
         res.send(200, {
@@ -103,8 +103,8 @@ describe('login', () => {
       })
     }).as('loginRequest')
     cy.getByTestId('email').focus().type(faker.internet.email())
-    cy.getByTestId('password').focus().type(faker.random.alphaNumeric(6))
-    cy.getByTestId('submit').click()
+    cy.getByTestId('password').focus().type(faker.random.alphaNumeric(6)).type('{enter}')
+    // cy.getByTestId('submit').click()
     cy.getByTestId('error-wrap')
       .getByTestId('spinner')
       .should('exist')
@@ -143,7 +143,7 @@ describe('login', () => {
     })
   })
 
-  it('Should prevent miltiple submits', () => {
+  it('Should prevent multiple submits', () => {
     cy.intercept('POST', /login/, req => {
       req.reply(res => {
         res.send(200, {
