@@ -8,12 +8,16 @@ import {
   mockOk
 } from '../support/signup-mocks'
 
-const simulateValidSubmit = (): void => {
+const populateFields = (): void => {
   cy.getByTestId('name').focus().type(faker.name.findName())
   cy.getByTestId('email').focus().type(faker.internet.email())
   const pwd = faker.random.alphaNumeric(6)
   cy.getByTestId('password').focus().type(pwd)
   cy.getByTestId('passwordConfirm').focus().type(pwd)
+}
+
+const simulateValidSubmit = (): void => {
+  populateFields()
   cy.getByTestId('submit').click()
 }
 
@@ -122,5 +126,13 @@ describe('SignUp', () => {
       testUrl('/')
       testLocalStorageItem('accessToken')
     })
+  })
+
+  it('Should prevent multiple submits', () => {
+    mockOk()
+    populateFields()
+    cy.getByTestId('submit').dblclick()
+
+    cy.get('@request.all').should('have.length', 1)
   })
 })
