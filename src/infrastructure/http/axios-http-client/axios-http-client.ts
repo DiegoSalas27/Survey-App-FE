@@ -16,22 +16,23 @@ export class AxiosHttpClient<BodyTye, ResponseType>
     } catch (error: any) {
       axiosResponse = error.response
     }
-    return {
-      statusCode: axiosResponse.status,
-      body: axiosResponse.data
-    }
+    return this.adapt(axiosResponse)
   }
 
   async get(params: HttpGetParams): Promise<HttpResponse<ResponseType>> {
     let axiosResponse
     try {
-      const axiosReposne = await axios.get(params.url)
-      return {
-        statusCode: axiosReposne.status,
-        body: axiosReposne.data
-      }
+      const axiosResponse = await axios.get(params.url)
+      return this.adapt(axiosResponse)
     } catch (error: any) {
       axiosResponse = error.response
+    }
+  }
+
+  private adapt(axiosResponse: AxiosResponse<ResponseType, BodyTye>): HttpResponse<ResponseType> {
+    return {
+      statusCode: axiosResponse.status,
+      body: axiosResponse.data
     }
   }
 }
