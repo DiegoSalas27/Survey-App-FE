@@ -13,6 +13,10 @@ export const mockPostRequest = (): HttpPostParams<any> => ({
   body: {}
 })
 
+export const mockGetRequest = (): HttpGetParams => ({
+  url: faker.internet.url()
+})
+
 export class HttpPostClientSpy<T, R> implements HttpPostClient<T, R> {
   url?: string
   body?: T
