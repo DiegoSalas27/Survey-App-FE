@@ -1,5 +1,6 @@
 import { SetStorageMock } from '@data/test/mock-cache'
 import faker from '@faker-js/faker'
+import { UnexpectedError } from '../authentication/remote-authentication-protocols'
 import { LocalSaveAccessToken } from './local-save-access-token'
 
 type SutTypes = {
@@ -31,5 +32,11 @@ describe('LocalSaveAccessToken UseCase', () => {
     jest.spyOn(setStorage, 'set').mockRejectedValueOnce(new Error())
     const promise = sut.save(faker.datatype.uuid())
     await expect(promise).rejects.toThrow(new Error())
+  })
+
+  test('Should throw if accessToken is falsy', async () => {
+    const { sut } = makeSut()
+    const promise = sut.save(undefined)
+    await expect(promise).rejects.toThrow(new UnexpectedError())
   })
 })
