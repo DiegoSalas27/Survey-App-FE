@@ -1,7 +1,12 @@
 import faker from '@faker-js/faker'
 import { testInputStatus } from '../support/form-helper'
-import { testMainError, testUrl } from '../support/http-mocks'
-import { mockEmailInUseError, mockUnexpectedError, mockInvalidData } from '../support/signup-mocks'
+import { testLocalStorageItem, testMainError, testUrl } from '../support/http-mocks'
+import {
+  mockEmailInUseError,
+  mockUnexpectedError,
+  mockInvalidData,
+  mockOk
+} from '../support/signup-mocks'
 
 const simulateValidSubmit = (): void => {
   cy.getByTestId('name').focus().type(faker.name.findName())
@@ -99,6 +104,23 @@ describe('SignUp', () => {
     cy.wait('@request').then(res => {
       testMainError('An error has occurred. Please try again.')
       testUrl('/signup')
+    })
+  })
+
+  it('Should present save accessToken if valid credentials are provided', () => {
+    mockOk()
+    simulateValidSubmit()
+    cy.getByTestId('error-wrap')
+      .getByTestId('spinner')
+      .should('exist')
+      .getByTestId('main-error')
+      .should('not.exist')
+
+    cy.wait('@request').then(res => {
+      cy.getByTestId('spinner').should('not.exist')
+      cy.getByTestId('main-error').should('not.exist')
+      testUrl('/')
+      testLocalStorageItem('accessToken')
     })
   })
 })
