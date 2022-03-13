@@ -157,4 +157,16 @@ describe('login', () => {
 
     cy.get('@loginRequest.all').should('have.length', 1)
   })
+
+  it('Should not call submit if form is invalid', () => {
+    cy.intercept('POST', /login/, req => {
+      req.reply(res => {
+        res.send(200, {
+          accessToken: faker.datatype.uuid()
+        })
+      })
+    }).as('loginRequest')
+    cy.getByTestId('email').focus().type(faker.internet.email()).type('{enter}')
+    cy.get('@loginRequest.all').should('have.length', 0)
+  })
 })
