@@ -1,3 +1,23 @@
+# [1.8.0](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/compare/v1.7.0...v1.8.0) (2022-03-14)
+
+
+### Features
+
+* add initial survey-list view ([4887f8c](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/4887f8c0de105f2517314a016d07084f36825693))
+* add LoadSurveyList usecase ([dce709f](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/dce709f743fefa833b33dd4c90d9f3314195b532))
+* add skeleton shimmer effect ([52b8897](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/52b88971e7dffb031ab7a61269c6b3689829b3ea))
+* add survey icon to show status ([80d03bd](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/80d03bd938592f4d24b595c116f76abdcaa292b4))
+* add SurveyModel ([11f3ef9](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/11f3ef95e9bc2379d628027a7b87143775e56793))
+* ensure AxiosHttpClient  returns correct response on axios.get ([dc9139a](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/dc9139a899b57574adae6853e80491df30365ee6))
+* ensure AxiosHttpClient calls axios.get with correct values ([65b523c](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/65b523cf05cb255baf24fe5a67e177f5dba4d7d4))
+* ensure AxiosHttpClient returns correct error on axios.get ([a239153](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/a2391537a51b113980b0550ea3a0c8c87d653db0))
+* ensure RemoteLoadSurveyList calls HttpGetClient with correct URL ([4914f1b](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/4914f1b0d8b4b73570798eb082643f7e698f1cda))
+* ensure RemoteLoadSurveyList returns a list of SurveyModel if HttpGetClient returns 200 ([31897cc](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/31897cce2d499d6ecd08e1677cf937233cbb3214))
+* ensure RemoteLoadSurveyList returns no content if HttpGetClient returns 204 ([ec138c8](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/ec138c8fbedecd9f133fccd1611bef2c6108b998))
+* ensure RemoteLoadSurveyList thros UnexpectedError if HttpGetClient returns 403 ([ea2c5db](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/ea2c5db066f6b6efb7c31bd1a3df9790abbfd968))
+
+
+
 # [1.7.0](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/compare/v1.6.0...v1.7.0) (2022-03-13)
 
 
@@ -79,29 +99,6 @@
 
 * add env var to API URL ([3408fe7](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/3408fe724ed65ce41e9545a60bf21d8ecc335516))
 * add Login composition ([8af0a00](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/8af0a00086f99e6ef5c2f5a9879e05d031571c2f))
-
-
-
-# [1.3.0](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/compare/v1.2.0...v1.3.0) (2022-03-09)
-
-
-### Bug Fixes
-
-* ensure EmailValidation allows empty value ([74859ca](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/74859caef3ec5e765757432a766c14cb1c7e2a64))
-
-
-### Features
-
-* ensure EmailValidation returns error if email is invalid ([5270af0](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/5270af0ebda3ae504abac8146481f45daf4f73b0))
-* ensure EmailValidation returns falsy if email is valid ([c3793e0](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/c3793e001426438e01310df7355f7fe5b9c26379))
-* ensure MinLengthValidation returns error if value is invalid ([3d8a5a8](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/3d8a5a83da2fe066f8c9a500f0fcec9f3cd573a2))
-* ensure MinLengthValidation returns falsy if value is valid ([91700a7](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/91700a7b4158dd7b9617c0401f28e05d0c3a9bc7))
-* ensure RequiredFiledValidation returns error if field is empty ([b7fa5c8](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/b7fa5c8d9dd268170b67b3920997fb306e678265))
-* ensure RequiredFiledValidation returns falsy if field is not empty ([6dfd0c6](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/6dfd0c670278edd640aa048ca97e0993395aaf7d))
-* ensure ValidationBuilder has a min-length  helper ([fb8a334](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/fb8a3345ef21c4dc16ae07e02ac4fb361d91e638))
-* ensure ValidationBuilder has a required helper ([8307d33](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/8307d331c116df6274b39079f57dc6a4a1d97597))
-* ensure ValidationBuilder has an email helper ([e6d6e8b](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/e6d6e8b2a8e298f096e629ee5e2845a80f39c475))
-* ensure ValidationComposite returns error if any validation fails ([a033cce](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/a033cce0d15e1b42c876a06fc60ce34a214ab5bf))
 
 
 
