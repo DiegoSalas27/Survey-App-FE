@@ -23,40 +23,6 @@ const SurveyList: React.FC = () => {
             <footer>View result</footer>
           </li>
           <li>
-            <div className={Styles.surveyContent}>
-              <Icon className={Styles.iconWrap} iconName={IconName.thumbDown} />
-              <time>
-                <span className={Styles.day}>22</span>
-                <span className={Styles.month}>03</span>
-                <span className={Styles.year}>2020</span>
-              </time>
-              <p>Is Angular more robust than React?</p>
-            </div>
-            <footer>View result</footer>
-          </li>
-          <li>
-            <div className={Styles.surveyContent}>
-              <Icon className={Styles.iconWrap} iconName={IconName.thumbDown} />
-              <time>
-                <span className={Styles.day}>22</span>
-                <span className={Styles.month}>03</span>
-                <span className={Styles.year}>2020</span>
-              </time>
-              <p>Is Angular more robust than React?</p>
-            </div>
-            <footer>View result</footer>
-          </li>
-          <li>
-            <div className={Styles.surveyContent}>
-              <Icon className={Styles.iconWrap} iconName={IconName.thumbDown} />
-              <time>
-                <span className={Styles.day}>22</span>
-                <span className={Styles.month}>03</span>
-                <span className={Styles.year}>2020</span>
-              </time>
-              <p>Is Angular more robust than React?</p>
-            </div>
-            <footer>View result</footer>
           </li>
         </ul>
       </div>
