@@ -1,6 +1,6 @@
 import { Link, useHistory } from 'react-router-dom'
 import { AddAccount, SaveAccessToken } from '@domain/usecases'
-import { Footer, FormStatus, Header, Input, SubmitButton } from '@presentation/components'
+import { Footer, FormStatus, LoginHeader, Input, SubmitButton } from '@presentation/components'
 import Context from '@presentation/context/form/form-context'
 import { Validation } from '@presentation/protocols/validation'
 import React, { useEffect, useState } from 'react'
@@ -78,7 +78,7 @@ const Signup: React.FC<Props> = ({ validation, addAccount, saveAccessToken }) =>
 
   return (
     <div className={Styles.signupWrap}>
-      <Header />
+      <LoginHeader />
       <Context.Provider value={{ state, setState }}>
         <form data-testid="form" className={Styles.form} onSubmit={handleSubmit}>
           <h2>Sign up</h2>
