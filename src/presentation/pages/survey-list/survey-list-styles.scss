@@ -37,7 +37,7 @@
         flex-direction: column;
         justify-content: space-between;
         border-radius: 8px;
-        flex-basis: 48;
+        flex-basis: 48%;
         margin-bottom: 24px;
         box-shadow: 0px 1px 3px -1px $black;
 
@@ -112,6 +112,22 @@
 
           &:hover {
             background-color: $primaryDark;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .surveyListWrap {
+    .contentWrap {
+      ul {
+        flex-direction: column;
+        li {
+          flex-basis: 100%;
+          .surveyContent {
+            padding: 40px 0px;
           }
         }
       }
