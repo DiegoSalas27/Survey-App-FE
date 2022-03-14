@@ -1,6 +1,6 @@
 @import '../../styles/colors.scss';
 
-.login {
+.loginWrap {
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -17,7 +17,7 @@
     box-shadow: 0px 1px 3px -1px $black;
 
     h2 {
-      color: $primary-dark;
+      color: $primaryDark;
       text-align: center;
       font-size: 20px;
       text-transform: uppercase;
