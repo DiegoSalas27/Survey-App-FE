@@ -62,24 +62,12 @@
             position: absolute;
             top: -10px;
             right: -10px;
-            padding: 10px;
-            border-radius: 100%;
-            display: flex;
-            box-shadow: 0px 1px 3px -1px $black;
-
-            &.red {
-              background-color: $invalid;
-            }
-
-            &.green {
-              background-color: $valid;
-            }
           }
 
           time {
             display: flex;
             flex-direction: column;
-            background-color: $primaryLight;
+            background-color: $primaryLight; 
             color: $white;
             border-radius: 8px;
             margin-left: 24px;
