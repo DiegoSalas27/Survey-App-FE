@@ -1,3 +1,12 @@
+## [1.8.1](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/compare/v1.8.0...v1.8.1) (2022-03-14)
+
+
+### Bug Fixes
+
+* fixed compare field validation test ([e560aa0](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/e560aa0375c0b9a8085915e028e5879cd1156d88))
+
+
+
 # [1.8.0](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/compare/v1.7.0...v1.8.0) (2022-03-14)
 
 
@@ -84,21 +93,6 @@
 * ensure LocalAccessToken calls SetStorage with correct value ([8fe4778](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/8fe47788b456114b54ecfb64a6df93d9f0a677b3))
 * ensure LocalStorageAdapter calls localStorage with correct values ([d313500](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/d313500b370e6bace22f5a2611ca58f65225f27b))
 * ensure Login calls SaveAccessToken with correct values ([9c4a3fd](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/9c4a3fd58fb8505f9e978bf61823c96b971cc729))
-
-
-
-# [1.4.0](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/compare/v1.3.0...v1.4.0) (2022-03-12)
-
-
-### Bug Fixes
-
-* change AxiosHttpClient to handle exceptions ([863ebbc](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/863ebbcceb78702951099a84f1c89f208689af03))
-
-
-### Features
-
-* add env var to API URL ([3408fe7](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/3408fe724ed65ce41e9545a60bf21d8ecc335516))
-* add Login composition ([8af0a00](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/8af0a00086f99e6ef5c2f5a9879e05d031571c2f))
 
 
 
