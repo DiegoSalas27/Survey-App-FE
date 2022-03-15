@@ -21,6 +21,7 @@
         "space-before-blocks": "off",
         "@typescript-eslint/semi": "off",
         "@typescript-eslint/indent": "off",
+        "multiline-ternary": "off",
         "eol-last": "off",
         "no-multi-spaces": "off",
         "@typescript-eslint/strict-boolean-expressions": "off",
@@ -33,6 +34,7 @@
         "@typescript-eslint/no-misused-promises": "off",
         "node/no-path-concat": "off",
         "@typescript-eslint/consistent-type-definitions": "off",
+        "@typescript-eslint/no-unnecessary-type-assertion": "off",
         "react/jsx-uses-react": "error",
         "react/jsx-uses-vars": "error"
       }

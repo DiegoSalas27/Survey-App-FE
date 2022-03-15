@@ -46,7 +46,7 @@ describe('SignUp', () => {
     testInputStatus('email-status', 'email is required', '😢')
     cy.getByTestId('password').focus().type(faker.random.alphaNumeric(3))
     testInputStatus('password-status', 'password is required', '😢')
-    cy.getByTestId('passwordConfirm').focus().type(faker.random.alphaNumeric(3))
+    cy.getByTestId('passwordConfirm').focus().type(faker.random.alphaNumeric(2))
     testInputStatus('passwordConfirm-status', 'passwordConfirm is required', '😢')
     cy.getByTestId('submit').should('have.attr', 'disabled')
     cy.getByTestId('error-wrap').should('not.have.descendants')
@@ -124,7 +124,7 @@ describe('SignUp', () => {
       cy.getByTestId('spinner').should('not.exist')
       cy.getByTestId('main-error').should('not.exist')
       testUrl('/')
-      testLocalStorageItem('accessToken')
+      testLocalStorageItem('account')
     })
   })
 

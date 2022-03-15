@@ -1,4 +1,4 @@
-import { Footer, Icon, IconName, Logo } from '@presentation/components'
+import { Footer, Icon, IconName } from '@presentation/components'
 import Header from '@presentation/components/header/header'
 import React from 'react'
 import Styles from './survey-list-styles.scss'
