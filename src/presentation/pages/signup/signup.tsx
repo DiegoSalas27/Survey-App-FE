@@ -1,18 +1,18 @@
 import { Link, useHistory } from 'react-router-dom'
-import { AddAccount, UpdateCurrentAccount } from '@domain/usecases'
+import { AddAccount } from '@domain/usecases'
 import { Footer, FormStatus, LoginHeader, Input, SubmitButton } from '@presentation/components'
-import Context from '@presentation/context/form/form-context'
+import { ApiContext, FormContext } from '@presentation/context'
 import { Validation } from '@presentation/protocols/validation'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Styles from './signup-styles.scss'
 
 type Props = {
   validation: Validation | undefined
   addAccount: AddAccount | undefined
-  updateCurrentAccount: UpdateCurrentAccount | undefined
 }
 
-const Signup: React.FC<Props> = ({ validation, addAccount, updateCurrentAccount }) => {
+const Signup: React.FC<Props> = ({ validation, addAccount }) => {
+  const { setCurrentAccount } = useContext(ApiContext)
   const history = useHistory()
   const [state, setState] = useState({
     isLoading: false,
@@ -65,7 +65,7 @@ const Signup: React.FC<Props> = ({ validation, addAccount, updateCurrentAccount 
         password,
         passwordConfirm
       })
-      await updateCurrentAccount.save(account)
+      setCurrentAccount(account)
       history.replace('/')
     } catch (error: any) {
       setState({
@@ -79,7 +79,7 @@ const Signup: React.FC<Props> = ({ validation, addAccount, updateCurrentAccount 
   return (
     <div className={Styles.signupWrap}>
       <LoginHeader />
-      <Context.Provider value={{ state, setState }}>
+      <FormContext.Provider value={{ state, setState }}>
         <form data-testid="form" className={Styles.form} onSubmit={handleSubmit}>
           <h2>Sign up</h2>
           <Input type="text" name="name" placeholder="Enter your name" />
@@ -92,7 +92,7 @@ const Signup: React.FC<Props> = ({ validation, addAccount, updateCurrentAccount 
           </Link>
           <FormStatus />
         </form>
-      </Context.Provider>
+      </FormContext.Provider>
       <Footer />
     </div>
   )

@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from 'react'
-import { Link, useHistory } from 'react-router-dom'
-import { Input, FormStatus, Footer, LoginHeader, SubmitButton } from '@presentation/components'
-import Context from '@presentation/context/form/form-context'
-import Styles from './login-styles.scss'
+import { Authentication } from '@domain/usecases'
+import { Footer, FormStatus, Input, LoginHeader, SubmitButton } from '@presentation/components'
+import { ApiContext, FormContext } from '@presentation/context'
 import { Validation } from '@presentation/protocols/validation'
-import { Authentication, UpdateCurrentAccount } from '@domain/usecases'
+import React, { useContext, useEffect, useState } from 'react'
+import { Link, useHistory } from 'react-router-dom'
+import Styles from './login-styles.scss'
 
 type Props = {
   validation: Validation | undefined
   authentication: Authentication | undefined
-  updateCurrentAccount: UpdateCurrentAccount | undefined
 }
 
-const Login: React.FC<Props> = ({ validation, authentication, updateCurrentAccount }) => {
+const Login: React.FC<Props> = ({ validation, authentication }) => {
+  const { setCurrentAccount } = useContext(ApiContext)
   const history = useHistory()
   const [state, setState] = useState({
     isLoading: false,
@@ -46,7 +46,7 @@ const Login: React.FC<Props> = ({ validation, authentication, updateCurrentAccou
         isLoading: true
       })
       const account = await authentication.auth({ email: state.email, password: state.password })
-      await updateCurrentAccount.save(account)
+      setCurrentAccount(account)
       history.replace('/')
     } catch (error: any) {
       setState({
@@ -60,7 +60,7 @@ const Login: React.FC<Props> = ({ validation, authentication, updateCurrentAccou
   return (
     <div className={Styles.loginWrap}>
       <LoginHeader />
-      <Context.Provider value={{ state, setState } as any}>
+      <FormContext.Provider value={{ state, setState } as any}>
         <form data-testid="form" className={Styles.form} onSubmit={handleSubmit}>
           <h2>Login</h2>
           <Input type="email" name="email" placeholder="Enter your email" />
@@ -71,7 +71,7 @@ const Login: React.FC<Props> = ({ validation, authentication, updateCurrentAccou
           </Link>
           <FormStatus />
         </form>
-      </Context.Provider>
+      </FormContext.Provider>
       <Footer />
     </div>
   )
