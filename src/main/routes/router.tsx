@@ -1,4 +1,4 @@
-import { setCurrentAccountAdapter } from '@main/adapters/current-account-adapter'
+import { getCurrentAccountAdapter, setCurrentAccountAdapter } from '@main/adapters/current-account-adapter'
 import { makeLogin } from '@main/factories/pages/login/login-factory'
 import { makeSignup } from '@main/factories/pages/signup/signup-factory'
 import { ApiContext } from '@presentation/context'
@@ -10,7 +10,8 @@ const Router: React.FC = () => {
   return (
     <ApiContext.Provider
       value={{
-        setCurrentAccount: setCurrentAccountAdapter
+        setCurrentAccount: setCurrentAccountAdapter,
+        getCurrentAccount: getCurrentAccountAdapter
       }}
     >
       <BrowserRouter>

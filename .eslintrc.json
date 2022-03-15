@@ -21,6 +21,7 @@
         "space-before-blocks": "off",
         "@typescript-eslint/semi": "off",
         "@typescript-eslint/indent": "off",
+        "multiline-ternary": "off",
         "eol-last": "off",
         "no-multi-spaces": "off",
         "@typescript-eslint/strict-boolean-expressions": "off",
