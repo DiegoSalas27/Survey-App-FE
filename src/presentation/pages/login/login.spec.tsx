@@ -146,7 +146,7 @@ describe('Login Component', () => {
   test('Should call UpdateCurrentAccount on succeeds', async () => {
     const { sut, authenticationSpy, updateCurrentAccountMock } = makeSut()
     await simulateValidSubmit(sut)
-    expect(updateCurrentAccountMock.account).toBe(authenticationSpy.account)
+    expect(updateCurrentAccountMock.account).toEqual(authenticationSpy.account)
     expect(history.length).toBe(1)
     expect(history.location.pathname).toBe('/')
   })
