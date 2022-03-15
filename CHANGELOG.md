@@ -1,3 +1,17 @@
+# [1.9.0](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/compare/v1.8.1...v1.9.0) (2022-03-15)
+
+
+### Features
+
+* add getCurrentAccount to ApiContext ([ad553f4](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/ad553f4a5d6cf5fda0e46137f641675fda7b06ad))
+* apply PrivateRoute to SurveyList page ([380b717](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/380b717922ceb0175cafe4ccd71cbffeeaa24b42))
+* ensure CurrentAccountAdapter calls LocalStorageAdapter.get with correct values ([be7c576](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/be7c5767fb1ec4297aaf52aec0efa9587086c53e))
+* ensure LocalStorageAdapter calls localStorage.getItem with correct values ([0bfcb21](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/0bfcb214c24600f549723c574b2d56f16756d1f9))
+* ensure PrivateRoute component redirects to /login ig token is empty ([6480742](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/648074262b799d323a60819ffc5d1707bea7d6e5))
+* ensure PrivateRoute renders component if token is not empty ([d5bce60](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/d5bce606b12ae67c698d46d1e51c4fa278b91ac6))
+
+
+
 ## [1.8.1](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/compare/v1.8.0...v1.8.1) (2022-03-14)
 
 
@@ -74,25 +88,6 @@
 * ensure Signup component shows spinner on submit ([7f154b5](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/7f154b5c275b3053e6abc6769eb33c3fe090a302))
 * ensure Signup component starts with correct initial state ([5f5bf05](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/5f5bf05028018328795e549bf60e62548e5acb52))
 * ensure Signup enables submit button if form is valid ([9eef501](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/9eef501bd54067bede62a5142496593de33007a4))
-
-
-
-# [1.5.0](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/compare/v1.4.0...v1.5.0) (2022-03-12)
-
-
-### Bug Fixes
-
-* change webpack env var to use JSON.stringify ([115092d](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/115092d1db63ed254c127e897dfd6f3e581c0180))
-
-
-### Features
-
-* add SaveAccessToken usecase ([9e6e351](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/9e6e351630490548c16f57a93b05ce2785cdb9b1))
-* added continuous integration with travis ci ([7ab1eeb](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/7ab1eeb58e3ed3734f54a5f6e8bad408349599c8))
-* change login composition to add SaveAccessToken ([40f8886](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/40f8886aff92e3a64a15371a05592ac8f50701aa))
-* ensure LocalAccessToken calls SetStorage with correct value ([8fe4778](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/8fe47788b456114b54ecfb64a6df93d9f0a677b3))
-* ensure LocalStorageAdapter calls localStorage with correct values ([d313500](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/d313500b370e6bace22f5a2611ca58f65225f27b))
-* ensure Login calls SaveAccessToken with correct values ([9c4a3fd](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/9c4a3fd58fb8505f9e978bf61823c96b971cc729))
 
 
 
