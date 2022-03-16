@@ -1,19 +1,30 @@
 import React from 'react'
 import { Icon, IconName } from '@presentation/components'
 import Styles from './survey-item-styles.scss'
+import { SurveyModel } from '@domain/models'
 
-const SurveyItem: React.FC = () => {
+type Props = {
+  survey: SurveyModel
+}
+
+const SurveyItem: React.FC<Props> = ({ survey }) => {
   return (
     <div className={Styles.surveyItemWrap}>
       <li>
         <div className={Styles.surveyContent}>
-          <Icon className={Styles.iconWrap} iconName={IconName.thumbDown} />
+          <Icon className={Styles.iconWrap} iconName={IconName.thumbUp} />
           <time>
-            <span className={Styles.day}>22</span>
-            <span className={Styles.month}>03</span>
-            <span className={Styles.year}>2020</span>
+            <span data-testid="day" className={Styles.day}>
+              {survey.date.getDate()}
+            </span>
+            <span data-testid="month" className={Styles.month}>
+              {survey.date.toLocaleString('es-PE', { month: 'short' }).slice(0, -1)}
+            </span>
+            <span data-testid="year" className={Styles.year}>
+              {survey.date.getFullYear()}
+            </span>
           </time>
-          <p>Is Angular more robust than React?</p>
+          <p data-testid="question">{survey.question}</p>
         </div>
         <footer>View result</footer>
       </li>
