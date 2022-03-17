@@ -13,7 +13,10 @@ export class RemoteLoadSurveyList implements LoadSurveyList {
     const httpResponse = await this.httpGetClient.get({ url: this.url })
     switch (httpResponse.statusCode) {
       case HttpStatusCode.ok:
-        return httpResponse.body
+        return (httpResponse.body || []).map(survey => {
+          survey.date = new Date(survey.date) as any
+          return survey
+        })
       case HttpStatusCode.noContent:
         return []
       default:
