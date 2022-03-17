@@ -1,30 +1,42 @@
-import { Footer, Icon, IconName } from '@presentation/components'
+import { SurveyModel } from '@domain/models'
+import { LoadSurveyList } from '@domain/usecases'
+import { Footer } from '@presentation/components'
 import Header from '@presentation/components/header/header'
-import React from 'react'
+import { useErrorHandler } from '@presentation/hooks'
+import React, { useEffect, useState } from 'react'
+import { SurveyContext, SurveyError, SurveyListItem } from './components'
 import Styles from './survey-list-styles.scss'
 
-const SurveyList: React.FC = () => {
+type Props = {
+  loadSurveyList: LoadSurveyList
+}
+
+const SurveyList: React.FC<Props> = ({ loadSurveyList }) => {
+  const handleError = useErrorHandler((error: Error) => {
+    setState({ ...state, error: error.message })
+  })
+
+  const [state, setState] = useState({
+    surveys: [] as SurveyModel[],
+    error: '',
+    reload: false
+  })
+
+  useEffect(() => {
+    loadSurveyList
+      .loadAll()
+      .then(surveys => setState({ ...state, surveys }))
+      .catch(handleError)
+  }, [state.reload])
+
   return (
     <div className={Styles.surveyListWrap}>
       <Header />
       <div className={Styles.contentWrap}>
         <h2>Polls</h2>
-        <ul>
-          <li>
-            <div className={Styles.surveyContent}>
-              <Icon className={Styles.iconWrap} iconName={IconName.thumbDown} />
-              <time>
-                <span className={Styles.day}>22</span>
-                <span className={Styles.month}>03</span>
-                <span className={Styles.year}>2020</span>
-              </time>
-              <p>Is Angular more robust than React?</p>
-            </div>
-            <footer>View result</footer>
-          </li>
-          <li>
-          </li>
-        </ul>
+        <SurveyContext.Provider value={{ state, setState }}>
+          {state.error ? <SurveyError /> : <SurveyListItem />}
+        </SurveyContext.Provider>
       </div>
       <Footer />
     </div>

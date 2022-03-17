@@ -1,4 +1,10 @@
-import { ValidationBuilder, ValidationComposite } from '@validation/validators'
+import {
+  EmailValidation,
+  MinLengthValidation,
+  RequiredFieldValidation,
+  ValidationBuilder,
+  ValidationComposite
+} from '@validation/validators'
 import { makeLoginValidation } from './login-validation-factory'
 
 describe('LoginValidation Factory', () => {
@@ -6,8 +12,10 @@ describe('LoginValidation Factory', () => {
     const composite = makeLoginValidation()
     expect(composite).toEqual(
       ValidationComposite.build([
-        ...ValidationBuilder.field('email').required().email().build(),
-        ...ValidationBuilder.field('password').required().min(5).build()
+        new RequiredFieldValidation('email'),
+        new EmailValidation('email'),
+        new RequiredFieldValidation('password'),
+        new MinLengthValidation('password', 5)
       ])
     )
   })

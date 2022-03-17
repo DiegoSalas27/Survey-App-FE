@@ -1,5 +1,5 @@
 import { InvalidCredentialsError } from '@domain/errors'
-import { AccountModel } from '@domain/models'
+import { Authentication } from '@domain/usecases'
 import faker from '@faker-js/faker'
 import { ApiContext } from '@presentation/context'
 import { AuthenticationSpy, Helper, ValidationStub } from '@presentation/test'
@@ -11,7 +11,7 @@ import Login from './login'
 
 type SutTypes = {
   authenticationSpy: AuthenticationSpy
-  setCurrentAccountMock: (account: AccountModel) => void
+  setCurrentAccountMock: (account: Authentication.Model) => void
 }
 
 type SutParams = {
