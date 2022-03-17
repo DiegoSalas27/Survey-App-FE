@@ -41,7 +41,8 @@
         "no-debugger": "off",
         "@typescript-eslint/no-namespace": "off",
         "no-redeclare": "off",
-        "import/export": "off"
+        "import/export": "off",
+        "curly": "off"
       }
     }
   ]
