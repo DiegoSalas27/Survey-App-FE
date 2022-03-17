@@ -2,7 +2,6 @@ import { getCurrentAccountAdapter, setCurrentAccountAdapter } from '@main/adapte
 import { makeLogin, makeSignup, makeSurveyList } from '@main/factories/pages'
 import { PrivateRoute } from '@presentation/components'
 import { ApiContext } from '@presentation/context'
-import { SurveyList } from '@presentation/pages'
 import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
