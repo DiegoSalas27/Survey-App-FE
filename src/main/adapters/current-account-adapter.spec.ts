@@ -22,10 +22,4 @@ describe('CurrentAccountAdapter', () => {
     expect(getSpy).toHaveBeenCalledWith('account')
     expect(result).toEqual(account)
   })
-
-  test('Should throw UnexpectedError if an invalid account is provided', () => {
-    expect(() => {
-      setCurrentAccountAdapter(undefined)
-    }).toThrow(new UnexpectedError())
-  })
 })
