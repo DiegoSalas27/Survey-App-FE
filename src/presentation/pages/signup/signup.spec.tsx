@@ -1,5 +1,5 @@
 import { EmailInUseError } from '@domain/errors'
-import { AccountModel } from '@domain/models'
+import { AddAccount } from '@domain/usecases'
 import faker from '@faker-js/faker'
 import { ApiContext } from '@presentation/context'
 import { AddAccountSpy, Helper, ValidationStub } from '@presentation/test'
@@ -11,7 +11,7 @@ import Signup from './signup'
 
 type SutTypes = {
   addAccountSpy: AddAccountSpy
-  setCurrentAccountMock: (account: AccountModel) => void
+  setCurrentAccountMock: (account: AddAccount.Model) => void
 }
 
 type SutParams = {

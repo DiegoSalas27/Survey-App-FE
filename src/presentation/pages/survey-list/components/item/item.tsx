@@ -9,6 +9,7 @@ type Props = {
 
 const SurveyItem: React.FC<Props> = ({ survey }) => {
   const iconName = survey.didAnswer ? IconName.thumbUp : IconName.thumbDown
+  console.log(survey)
   return (
     <li className={Styles.surveyItemWrap}>
       <div className={Styles.surveyContent}>
