@@ -22,11 +22,11 @@ export class AxiosHttpClient<BodyTye, ResponseType>
   async get(params: HttpGetParams): Promise<HttpResponse<ResponseType>> {
     let axiosResponse
     try {
-      const axiosResponse = await axios.get(params.url)
-      return this.adapt(axiosResponse)
+      axiosResponse = await axios.get(params.url)
     } catch (error: any) {
       axiosResponse = error.response
     }
+    return this.adapt(axiosResponse)
   }
 
   private adapt(axiosResponse: AxiosResponse<ResponseType, BodyTye>): HttpResponse<ResponseType> {

@@ -37,7 +37,8 @@
         "@typescript-eslint/no-unnecessary-type-assertion": "off",
         "react/jsx-uses-react": "error",
         "react/jsx-uses-vars": "error",
-        "@typescript-eslint/no-floating-promises": "off"
+        "@typescript-eslint/no-floating-promises": "off",
+        "no-debugger": "off"
       }
     }
   ]
