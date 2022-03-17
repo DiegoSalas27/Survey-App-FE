@@ -22,7 +22,7 @@ export class AxiosHttpClient<BodyTye, ResponseType>
   async get(params: HttpGetParams): Promise<HttpResponse<ResponseType>> {
     let axiosResponse
     try {
-      axiosResponse = await axios.get(params.url)
+      axiosResponse = await axios.get(params.url, { headers: params.headers })
     } catch (error: any) {
       axiosResponse = error.response
     }
