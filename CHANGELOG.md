@@ -1,3 +1,32 @@
+# [1.10.0](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/compare/v1.9.0...v1.10.0) (2022-03-17)
+
+
+### Features
+
+* add makeAuthorizeGetHttpClientDecorator factory ([3f9f353](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/3f9f353ae15283b950e61fc1c7fa03711edaec34))
+* add SurveyList composition ([7cc77b3](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/7cc77b3a4a138f680c3ed784b21be17c2562031f))
+* change LoadSurveyList error layout ([fdb4f57](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/fdb4f57ea67d45e4334c9b49a6f7d4c7e3a2d0e5))
+* ensure AuthorizeHttpGetClientDecorator adds headers to HttpGetClient ([056d779](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/056d779e24b41c4f3ba1808a1f06c6a0ce0cf55c))
+* ensure AuthorizeHttpGetClientDecorator does not add headers if GetStorage is invalid ([abe54c9](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/abe54c976c1b49c7cbd923f792ebac610784b4bb))
+* ensure AuthorizeHttpGetClientDecorator returns the same as HttpGetClient ([a0d04b0](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/a0d04b088a0405fedc779867b24ef1abe0c0f313))
+* ensure AuthroizeHttpGetClientDecorator calls GetStorage with correct value ([ce201d8](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/ce201d889826cb654837692b8bde6b5b6481ea31))
+* ensure AxiosHttpClient calls axios with correct values ([a67635b](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/a67635b5f33f11189895107b7f20d9fcb48327da))
+* ensure header renders username ([614a024](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/614a024ccf9203ae4d871fe73da07a5e4c8dd468))
+* ensure LocalStorageAdapter removes localStorage item when value is undefined ([66d6aa8](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/66d6aa8ef8723d72fb538c83c154660337fbd495))
+* ensure logout calls setCurrentAccount with undefined ([558173e](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/558173e032e10211843132c572fd846efce1e6df))
+* ensure RemoteLoadSurveyList maps remote data to domain data ([0affe44](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/0affe44d18ee1f83d5118b4a714249af80c57517))
+* ensure RemoteLoadSurveyList throws AccessDeniedError if HttpGetClient returns 403 ([4d1517a](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/4d1517a77f453fce6bfa69141e667a90a9f4e0b4))
+* ensure SurveyItem component renders data with correct values ([2af11f3](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/2af11f316f902b0ba65d6b51f8367b79c0ee7a7e))
+* ensure SurveyItem component renders icon and data with correct values ([4884c31](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/4884c31400b33b5589d9b12ca9fc4b0f8fb54201))
+* ensure SurveyList calls LoadSurveyList on reload ([4b80e7b](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/4b80e7baa15971a08fe2c5a27bf056918513b92e))
+* ensure SurveyList component logsout on AccessDeniedError ([62c5461](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/62c54610b90bc40b08bc4274fbcda43ee73987c2))
+* ensure SurveyList component renders 4 empty items on start ([964a5ae](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/964a5ae6e98914c2b29592612743a8daea420e25))
+* ensure SurveyList component renders SurveyItems on success ([5a28fe4](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/5a28fe4380c4e7fbf254c2ab7c379d79e0531fbc))
+* ensure SurveyList renders error on failure ([5f7ef62](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/5f7ef62fa5be917eed5f390806e922ab6ed14b35))
+* ensuure SurveyList calls LoadSurveyList once ([15e0eb0](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/15e0eb017c9b5c393c73fb04f902a0e7e674341d))
+
+
+
 # [1.9.0](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/compare/v1.8.1...v1.9.0) (2022-03-15)
 
 
@@ -52,42 +81,6 @@
 ### Features
 
 * ensure LocalSaveAccessToken throws an error if no accessToken is provided ([1565524](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/15655245e3821d57ba2f6b09ae14ee085b429597))
-
-
-
-# [1.6.0](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/compare/v1.5.0...v1.6.0) (2022-03-12)
-
-
-### Bug Fixes
-
-* delete style import in Button component ([4c0dd81](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/4c0dd810c235523117e522243279ce23ea8d786e))
-
-
-### Features
-
-* add AddAccount to index ([ace2e57](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/ace2e57805c5bd584abe52f52ca4e5bfbb6075b1))
-* add AddAccount usecase ([24d209e](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/24d209e1576accf28ce467338d2d345944ee6ab3))
-* add SignUp Composition ([5f53785](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/5f5378594a5d4f9d557156df63087a3612188172))
-* add signup view ([20127d3](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/20127d35f21c5ecd55fccda6430d47d781344cb4))
-* add SignupValidation factory ([b1c6298](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/b1c62980e3954f38134ae320e76caca782546090))
-* ensure CompareFieldsValidation returns error if validation fails ([9101b9a](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/9101b9af4df042a11b10c0164901a983172ee1b9))
-* ensure CompareFieldsValidation returns falsy if validation succeeds ([586d1a9](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/586d1a942cb222b0da95451050709c6a64810382))
-* ensure Login component shows email error if Validation fails ([babf220](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/babf220490bdbbce6e2e0a9f803194cf0d733f49))
-* ensure Login component shows password  error if Validation fails ([12b1b5a](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/12b1b5aac4790487a942b2fd3d812d9e9b1eabd5))
-* ensure Login component shows password confirmation error if Validation fails ([b27f833](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/b27f83389332fedc5822aaaed4be0ebc458aee25))
-* ensure RemoteAddAccount throws EmailInUseError if HttpPostClient returns 403 ([ec7787c](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/ec7787c5a6154071ba833a5a64b12eaff172b56f))
-* ensure RemoteAddAccount throws UnexpectedError if HttpPostClient returns 400 ([3b32d70](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/3b32d709bf80001bb2f16c9daf1719a1de05af80))
-* ensure RemoteAuthentication calls httpPostClient with correct url ([2c211b1](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/2c211b1c738fbc8d8dbab1dd829d954f17e67241))
-* ensure Signup component calls AddAccount only once ([2a7db8f](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/2a7db8fa23e17a82e18505aef3bde5ab3df9a14c))
-* ensure Signup component calls AddAccount with correct values ([d846990](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/d846990f44da65e80f9e4255d7b9d00d8143ae8f))
-* ensure Signup component calls SaveAccessToken on success ([d2cb16d](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/d2cb16d04719e852a2ce4dde354d7a60fd9c57a3))
-* ensure Signup component doesn not call AddAccount if form is invalid ([44e845c](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/44e845c3969ba29106990e80a41ac080652cf670))
-* ensure Signup component goes to login page ([1cff2e4](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/1cff2e4820d8ffec946663d1e0b3fd0cf9adf7f2))
-* ensure Signup component presents error if AddAccount fails ([e6e307d](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/e6e307d56d2f0925d7505af7b12a6a638c1a5670))
-* ensure Signup component shows name error if Validation fails ([d1c1dbd](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/d1c1dbdcb1043ea2ef611f1545bb3b0e37da64eb))
-* ensure Signup component shows spinner on submit ([7f154b5](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/7f154b5c275b3053e6abc6769eb33c3fe090a302))
-* ensure Signup component starts with correct initial state ([5f5bf05](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/5f5bf05028018328795e549bf60e62548e5acb52))
-* ensure Signup enables submit button if form is valid ([9eef501](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/9eef501bd54067bede62a5142496593de33007a4))
 
 
 
