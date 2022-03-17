@@ -1,7 +1,7 @@
 import React from 'react'
-import { fireEvent, render, screen } from '@testing-library/react'
 import { createMemoryHistory, MemoryHistory } from 'history'
 import { Router } from 'react-router-dom'
+import { fireEvent, render, screen } from '@testing-library/react'
 import { Header } from '@presentation/components'
 import { ApiContext } from '@presentation/context'
 import { AccountModel } from '@domain/models'
