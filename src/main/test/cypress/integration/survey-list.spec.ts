@@ -1,5 +1,5 @@
 import faker from '@faker-js/faker'
-import { setLocalStorageItem, testUrl } from '../support/helpers'
+import { getLocalStorageItem, setLocalStorageItem, testUrl } from '../support/helpers'
 import { mockAccessDeniedError, mockUnexpectedError } from '../support/survey-list-mocks'
 
 describe('SurveyList', () => {
@@ -19,5 +19,12 @@ describe('SurveyList', () => {
   it('Should logout on AccessDeniedError', () => {
     mockAccessDeniedError()
     testUrl('/login')
+  })
+
+  it('Should present correct username', () => {
+    cy.visit('')
+    mockUnexpectedError()
+    const { name } = getLocalStorageItem('account')
+    cy.getByTestId('username').should('contain.text', name)
   })
 })
