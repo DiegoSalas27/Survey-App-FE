@@ -4,6 +4,6 @@
   "supportFile": "src/main/test/cypress/support/index.js",
   "pluginsFile": "src/main/test/cypress/plugins/index.js",
   "integrationFolder": "src/main/test/cypress/integration",
-  "requestTimeout": 10000,
+  "requestTimeout": 30000,
   "video": false
 }

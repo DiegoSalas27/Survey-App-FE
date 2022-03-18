@@ -15,6 +15,7 @@ describe('SurveyList', () => {
     cy.fixture('account').then(account => {
       setLocalStorageItem('account', account)
     })
+    cy.visit('')
   })
 
   it('Should present error on UnexpectedError', () => {
@@ -25,7 +26,6 @@ describe('SurveyList', () => {
   })
 
   it('Should reload on button click', () => {
-    cy.visit('')
     mockUnexpectedError()
     cy.wait('@requestError')
     cy.getByTestId('error').should('contain.text', 'An error has occurred. Please try again.')
@@ -35,27 +35,24 @@ describe('SurveyList', () => {
   })
 
   it('Should logout on AccessDeniedError', () => {
-    cy.visit('')
     mockAccessDeniedError()
     testUrl('/login')
   })
 
   it('Should present correct username', () => {
-    cy.visit('')
     mockUnexpectedError()
     const { name } = getLocalStorageItem('account')
     cy.getByTestId('username').should('contain.text', name)
   })
 
   it('Should logout on logout link click', () => {
-    cy.visit('')
     cy.getByTestId('logout').click()
     testUrl('/login')
   })
 
   it('Should present survey items', () => {
-    mockOk()
     cy.visit('')
+    mockOk()
     cy.get('li:empty').should('have.length', 4)
     cy.wait('@request').then(res => {
       cy.get('li:not(:empty)').should('have.length', 2)
