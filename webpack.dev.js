@@ -1,3 +1,4 @@
+/** @type {import('webpack').Configuration} */
 const { DefinePlugin } = require('webpack')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const common = require('./webpack.common')
@@ -31,6 +32,7 @@ module.exports = merge(common, {
       }
     ]
   },
+  devtool: 'inline-source-map',
   devServer: {
     static: './public',
     devMiddleware: {
