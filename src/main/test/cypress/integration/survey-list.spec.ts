@@ -37,17 +37,13 @@ describe('SurveyList', () => {
 
   it('Should logout on AccessDeniedError', () => {
     mockAccessDeniedError()
-    cy.wait('@request').then(res => {
-      testUrl('/login')
-    })
+    testUrl('/login')
   })
 
   it('Should present correct username', () => {
     mockUnexpectedError()
-    cy.wait('@requestError').then(res => {
-      const { name } = getLocalStorageItem('account')
-      cy.getByTestId('username').should('contain.text', name)
-    })
+    const { name } = getLocalStorageItem('account')
+    cy.getByTestId('username').should('contain.text', name)
   })
 
   it('Should logout on logout link click', () => {
