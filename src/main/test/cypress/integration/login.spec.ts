@@ -106,8 +106,9 @@ describe('login', () => {
     mockOk()
     populateFields()
     cy.getByTestId('submit').dblclick()
-    cy.wait('@request')
-    cy.get('@request.all').should('have.length', 1)
+    cy.wait('@request').then(res => {
+      cy.get('@request.all').should('have.length', 1)
+    })
   })
 
   it('Should not call submit if form is invalid', () => {

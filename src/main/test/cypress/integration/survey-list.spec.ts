@@ -20,17 +20,19 @@ describe('SurveyList', () => {
 
   it('Should present error on UnexpectedError', () => {
     mockUnexpectedError()
-    cy.wait('@requestError')
-    cy.getByTestId('error').should('contain.text', 'An error has occurred. Please try again.')
+    cy.wait('@requestError').then(res => {
+      cy.getByTestId('error').should('contain.text', 'An error has occurred. Please try again.')
+    })
   })
 
   it('Should reload on button click', () => {
     mockUnexpectedError()
-    cy.wait('@requestError')
-    cy.getByTestId('error').should('contain.text', 'An error has occurred. Please try again.')
-    mockOk()
-    cy.getByTestId('reload').click()
-    cy.get('li:not(:empty)').should('have.length', 2)
+    cy.wait('@requestError').then(res => {
+      cy.getByTestId('error').should('contain.text', 'An error has occurred. Please try again.')
+      mockOk()
+      cy.getByTestId('reload').click()
+      cy.get('li:not(:empty)').should('have.length', 2)
+    })
   })
 
   it('Should logout on AccessDeniedError', () => {
@@ -40,8 +42,10 @@ describe('SurveyList', () => {
 
   it('Should present correct username', () => {
     mockUnexpectedError()
-    const { name } = getLocalStorageItem('account')
-    cy.getByTestId('username').should('contain.text', name)
+    cy.wait('@requestError').then(res => {
+      const { name } = getLocalStorageItem('account')
+      cy.getByTestId('username').should('contain.text', name)
+    })
   })
 
   it('Should logout on logout link click', () => {
