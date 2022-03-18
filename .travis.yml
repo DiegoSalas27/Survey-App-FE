@@ -14,3 +14,6 @@ deploy:
   app: react-web-app-dsn
 notifications:
   email: false
+after_success:
+  - cd ..
+  - npm run coveralls
