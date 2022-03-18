@@ -41,7 +41,7 @@ module.exports = merge(common, {
       'process.env.API_URL': JSON.stringify('https://clean-node-api-dsn.herokuapp.com/api')
     }),
     new HtmlWebPackPlugin({
-      template: './template.dev.html'
+      template: './template.prod.html'
     }),
     new MiniCssExtractPlugin({
       filename: 'main-bundle-[hash].css'
