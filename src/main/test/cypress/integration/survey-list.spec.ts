@@ -19,7 +19,6 @@ describe('SurveyList', () => {
   })
 
   it('Should present error on UnexpectedError', () => {
-    cy.visit('')
     mockUnexpectedError()
     cy.wait('@requestError')
     cy.getByTestId('error').should('contain.text', 'An error has occurred. Please try again.')
