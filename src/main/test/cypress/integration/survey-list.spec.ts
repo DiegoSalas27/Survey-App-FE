@@ -37,7 +37,9 @@ describe('SurveyList', () => {
 
   it('Should logout on AccessDeniedError', () => {
     mockAccessDeniedError()
-    testUrl('/login')
+    cy.wait('@request').then(res => {
+      testUrl('/login')
+    })
   })
 
   it('Should present correct username', () => {
