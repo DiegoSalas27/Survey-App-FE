@@ -95,7 +95,7 @@ describe('SignUp', () => {
       .getByTestId('main-error')
       .should('not.exist')
 
-    cy.wait('@request').then(res => {
+    cy.wait('@requestError').then(res => {
       testMainError('An error has occurred. Please try again.')
       testUrl('/signup')
     })

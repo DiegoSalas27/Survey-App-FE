@@ -20,14 +20,14 @@ describe('SurveyList', () => {
   it('Should present error on UnexpectedError', () => {
     cy.visit('')
     mockUnexpectedError()
-    cy.wait('@request')
+    cy.wait('@requestError')
     cy.getByTestId('error').should('contain.text', 'An error has occurred. Please try again.')
   })
 
   it('Should reload on button click', () => {
     cy.visit('')
     mockUnexpectedError()
-    cy.wait('@request')
+    cy.wait('@requestError')
     cy.getByTestId('error').should('contain.text', 'An error has occurred. Please try again.')
     mockOk()
     cy.getByTestId('reload').click()
