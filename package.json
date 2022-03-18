@@ -4,7 +4,8 @@
   "description": "react project",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --open",
+    "dev": "webpack-dev-server --open --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js",
     "test": "jest --passWithNoTests --no-cache --runInBand",
     "test:watch": "npm test -- --watch",
     "test:staged": "npm test -- --findRelatedTests",
@@ -46,6 +47,7 @@
     "jest": "^27.5.1",
     "jest-localstorage-mock": "^2.4.19",
     "lint-staged": "^12.3.5",
+    "mini-css-extract-plugin": "^2.6.0",
     "node-sass": "^7.0.1",
     "npm-check": "^5.9.2",
     "prettier": "^2.5.1",
