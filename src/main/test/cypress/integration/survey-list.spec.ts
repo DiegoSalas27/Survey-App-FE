@@ -1,6 +1,6 @@
 import faker from '@faker-js/faker'
-import { setLocalStorageItem } from '../support/helpers'
-import { mockUnexpectedError } from '../support/survey-list-mocks'
+import { setLocalStorageItem, testUrl } from '../support/helpers'
+import { mockAccessDeniedError, mockUnexpectedError } from '../support/survey-list-mocks'
 
 describe('SurveyList', () => {
   beforeEach(() => {
@@ -14,5 +14,10 @@ describe('SurveyList', () => {
   it('Should present error on UnexpectedError', () => {
     mockUnexpectedError()
     cy.getByTestId('error').should('contain.text', 'An error has occurred. Please try again.')
+  })
+
+  it('Should logout on AccessDeniedError', () => {
+    mockAccessDeniedError()
+    testUrl('/login')
   })
 })

@@ -16,7 +16,7 @@ export const mockServerError = (url: RegExp, method: 'POST' | 'GET' | 'PUT' | 'P
   }).as('request')
 }
 
-export const mockForbiddenError = (url: RegExp, method: 'POST'): void => {
+export const mockForbiddenError = (url: RegExp, method: 'POST' | 'GET'): void => {
   cy.intercept(method, url, req => {
     req.reply(res => {
       res.send(403, res.body)
