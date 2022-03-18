@@ -1,12 +1,7 @@
 import faker from '@faker-js/faker'
-import { testInputStatus } from '../support/form-helper'
-import { testLocalStorageItem, testMainError, testUrl } from '../support/http-mocks'
-import {
-  mockEmailInUseError,
-  mockUnexpectedError,
-  mockInvalidData,
-  mockOk
-} from '../support/signup-mocks'
+import { testInputStatus, testMainError } from '../support/form-helpers'
+import { testUrl, testLocalStorageItem } from '../support/helpers'
+import { mockEmailInUseError, mockUnexpectedError, mockOk } from '../support/signup-mocks'
 
 const populateFields = (): void => {
   cy.getByTestId('name').focus().type(faker.name.findName())
@@ -83,21 +78,6 @@ describe('SignUp', () => {
 
   it('Should present error UnexpectedError on 400', () => {
     mockUnexpectedError()
-    simulateValidSubmit()
-    cy.getByTestId('error-wrap')
-      .getByTestId('spinner')
-      .should('exist')
-      .getByTestId('main-error')
-      .should('not.exist')
-
-    cy.wait('@request').then(res => {
-      testMainError('An error has occurred. Please try again.')
-      testUrl('/signup')
-    })
-  })
-
-  it('Should present error UnexpectedError if invalid data is returned', () => {
-    mockInvalidData()
     simulateValidSubmit()
     cy.getByTestId('error-wrap')
       .getByTestId('spinner')

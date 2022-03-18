@@ -1,12 +1,7 @@
 import faker from '@faker-js/faker'
-import { testInputStatus } from '../support/form-helper'
-import { testLocalStorageItem, testMainError, testUrl } from '../support/http-mocks'
-import {
-  mockInvalidCredentialsError,
-  mockInvalidData,
-  mockOk,
-  mockUnexpectedError
-} from '../support/login-mocks'
+import { testInputStatus, testMainError } from '../support/form-helpers'
+import { testUrl, testLocalStorageItem } from '../support/helpers'
+import { mockInvalidCredentialsError, mockOk, mockUnexpectedError } from '../support/login-mocks'
 
 const populateFields = (): void => {
   cy.getByTestId('email').focus().type(faker.internet.email())
@@ -69,23 +64,6 @@ describe('login', () => {
   it('Should present error UnexpectedError on 400', () => {
     mockUnexpectedError()
     simulateValidSubmit()
-    cy.getByTestId('error-wrap')
-      .getByTestId('spinner')
-      .should('exist')
-      .getByTestId('main-error')
-      .should('not.exist')
-
-    cy.wait('@request').then(res => {
-      testMainError('An error has occurred. Please try again.')
-      testUrl('/login')
-    })
-  })
-
-  it('Should present error UnexpectedError if invalid data is returned', () => {
-    mockInvalidData()
-    cy.getByTestId('email').focus().type(faker.internet.email())
-    cy.getByTestId('password').focus().type(faker.random.alphaNumeric(6)).type('{enter}')
-    // cy.getByTestId('submit').click()
     cy.getByTestId('error-wrap')
       .getByTestId('spinner')
       .should('exist')
