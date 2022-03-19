@@ -4,7 +4,7 @@ import { render, screen } from '@testing-library/react'
 import React from 'react'
 import SurveyResult from './survey-result'
 
-const makeSut = () => {
+const makeSut = (): void => {
   render(
     <ApiContext.Provider
       value={{ setCurrentAccount: jest.fn(), getCurrentAccount: () => mockAccountModel() }}
