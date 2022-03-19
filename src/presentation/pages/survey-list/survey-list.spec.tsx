@@ -8,7 +8,7 @@ import { SurveyList } from '@presentation/pages'
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import React from 'react'
 import { Router } from 'react-router-dom'
-import error from './components/error/error'
+import error from '../../components/error/error'
 
 class LoadSurveyListSpy implements LoadSurveyList {
   callsCount = 0
