@@ -31,7 +31,8 @@ export namespace RemoteLoadSurveyResult {
       image?: string
       answer: string
       count: number
-      percent: number
+      percent: number,
+      isCurrentAccountAsnwer: boolean
     }>
     date: string
   }
