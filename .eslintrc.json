@@ -43,7 +43,8 @@
         "no-redeclare": "off",
         "import/export": "off",
         "curly": "off",
-        "node/handle-callback-err": "off"
+        "node/handle-callback-err": "off",
+        "react/no-unescaped-entities": "off"
       }
     }
   ]
