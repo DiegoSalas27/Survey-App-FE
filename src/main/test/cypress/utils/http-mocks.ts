@@ -13,7 +13,7 @@ export const mockServerError = (url: RegExp, method: 'POST' | 'GET' | 'PUT' | 'P
     req.reply(res => {
       res.send(faker.helpers.randomize([400, 404, 500]), res.body)
     })
-  }).as('request')
+  }).as('requestError')
 }
 
 export const mockForbiddenError = (url: RegExp, method: 'POST' | 'GET'): void => {

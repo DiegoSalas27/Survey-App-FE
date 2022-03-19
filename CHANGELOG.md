@@ -1,3 +1,19 @@
+# [1.11.0](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/compare/v1.10.0...v1.11.0) (2022-03-18)
+
+
+### Bug Fixes
+
+* adjust responsive layout ([8be5278](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/8be5278071d433e3b246e55fb24a8bd222ce4aec))
+
+
+### Features
+
+* add cdn to external dependencies ([c82bdc9](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/c82bdc964b0ad6c2600f77ac3a6d685484f7690f))
+* add favicon ([493193f](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/493193f0c553c0a4441fe8d8cd73c9f31ea46dc3))
+* add node server to serve static files ([dfcd836](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/dfcd836382e7db761113f7bd3494fcba96ef7717))
+
+
+
 # [1.10.0](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/compare/v1.9.0...v1.10.0) (2022-03-17)
 
 
@@ -67,20 +83,6 @@
 * ensure RemoteLoadSurveyList returns a list of SurveyModel if HttpGetClient returns 200 ([31897cc](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/31897cce2d499d6ecd08e1677cf937233cbb3214))
 * ensure RemoteLoadSurveyList returns no content if HttpGetClient returns 204 ([ec138c8](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/ec138c8fbedecd9f133fccd1611bef2c6108b998))
 * ensure RemoteLoadSurveyList thros UnexpectedError if HttpGetClient returns 403 ([ea2c5db](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/ea2c5db066f6b6efb7c31bd1a3df9790abbfd968))
-
-
-
-# [1.7.0](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/compare/v1.6.0...v1.7.0) (2022-03-13)
-
-
-### Bug Fixes
-
-* ignore cypress folder for tsconfig ([acde551](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/acde5515b9e990888316dd3fa19460c21878807c))
-
-
-### Features
-
-* ensure LocalSaveAccessToken throws an error if no accessToken is provided ([1565524](https://github.com/DiegoSalas27/ReactJS-Hooks-TDD-Clean-Architecture-SOLID-e-Patterns/commit/15655245e3821d57ba2f6b09ae14ee085b429597))
 
 
 
