@@ -8,29 +8,24 @@ const SurveyResult: React.FC = () => {
     <div className={Styles.surveyResultWrap}>
       <Header />
       <div className={Styles.contentWrap}>
-        <hgroup>
-          <h2>What's your favorite web framework? hat's your favorite web framework?</h2>
-          <Calendar date={new Date()} className={Styles.calendarWrap} />
-        </hgroup>
+        {false && (
+          <>
+            <hgroup>
+              <Calendar date={new Date()} className={Styles.calendarWrap} />
+              <h2>What's your favorite web framework? hat's your favorite web framework?</h2>
+            </hgroup>
 
-        <FlipMove className={Styles.answersList}>
-          <li>
-            <img src="http://fordevs.herokuapp.com/static/img/logo-react.png" />
-            <span className={Styles.answer}>ReactJS</span>
-            <span className={Styles.percent}>50%</span>
-          </li>
-          <li className={Styles.active}>
-            <img src="http://fordevs.herokuapp.com/static/img/logo-react.png" />
-            <span className={Styles.answer}>ReactJS</span>
-            <span className={Styles.percent}>50%</span>
-          </li>
-          <li>
-            <img src="http://fordevs.herokuapp.com/static/img/logo-react.png" />
-            <span className={Styles.answer}>ReactJS</span>
-            <span className={Styles.percent}>50%</span>
-          </li>
-        </FlipMove>
-        <button>Vote</button>
+            <FlipMove className={Styles.answersList}>
+              <li>
+                <img src="http://fordevs.herokuapp.com/static/img/logo-react.png" />
+                <span className={Styles.answer}>ReactJS</span>
+                <span className={Styles.percent}>50%</span>
+              </li>
+            </FlipMove>
+            <button>Vote</button>
+          </>
+        )}
+
         {false && <Loading />}
       </div>
       <Footer />

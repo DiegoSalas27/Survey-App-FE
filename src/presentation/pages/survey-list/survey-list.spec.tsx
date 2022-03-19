@@ -1,4 +1,3 @@
-import { createMemoryHistory, MemoryHistory } from 'history'
 import { AccessDeniedError, UnexpectedError } from '@domain/errors'
 import { AccountModel, SurveyModel } from '@domain/models'
 import { mockAccountModel, mockSurveyListModel } from '@domain/test'
@@ -6,9 +5,9 @@ import { LoadSurveyList } from '@domain/usecases'
 import { ApiContext } from '@presentation/context'
 import { SurveyList } from '@presentation/pages'
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { createMemoryHistory, MemoryHistory } from 'history'
 import React from 'react'
 import { Router } from 'react-router-dom'
-import error from '../../components/error/error'
 
 class LoadSurveyListSpy implements LoadSurveyList {
   callsCount = 0
