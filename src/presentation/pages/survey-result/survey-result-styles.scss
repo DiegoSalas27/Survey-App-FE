@@ -19,7 +19,6 @@
 
     &:empty {
       position: relative;
-      overflow: hidden;
       background-repeat: no-repeat;
       background-image: linear-gradient(to right, $disabledBackground, $disabledBackground),
         linear-gradient(to right, $disabledBackground, $disabledBackground),
@@ -42,69 +41,9 @@
         top: 0;
         left: 0;
         transform: translateX(-100%);
-        background-image: linear-gradient(to right, transparent, rgba($white, 0.3), transparent);
-        animation: shimmer 1s infinite;
+        background-image: linear-gradient(to right, transparent, rgba($white, 0.2), transparent);
+        animation: shimmer 1.2s infinite;
       }
-    }
-
-    hgroup {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      margin-bottom: 16px;
-
-      h2 {
-        color: $primaryDark;
-        font-size: 28px;
-        font-weight: bold;
-      }
-
-      .calendarWrap {
-        width: 80px;
-        margin-right: 16px;
-      }
-    }
-
-    .answersList {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-
-      li {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        background-color: $white;
-        align-items: center;
-        padding: 16px;
-        border-radius: 8px;
-        color: $primaryDark;
-        margin-top: 16px;
-
-        &.active {
-          box-shadow: 0px 0px 3px 2px $primaryLight;
-        }
-
-        img {
-          width: 50px;
-          height: 50px;
-          margin-right: 16px;
-        }
-
-        .answer {
-          flex-grow: 1;
-          margin-right: 16px;
-          font-size: 20px;
-        }
-
-        .percent {
-          font-size: 30px;
-        }
-      }
-    }
-
-    button {
-      margin-top: 24px;
     }
   }
 }
@@ -113,50 +52,11 @@
   .surveyResultWrap {
     .contentWrap {
       &:empty {
-        background-image: linear-gradient(to right, $disabledBackground, $disabledBackground),
-          linear-gradient(to right, $disabledBackground, $disabledBackground),
-          linear-gradient(to right, $disabledBackground, $disabledBackground),
-          linear-gradient(to right, $disabledBackground, $disabledBackground),
-          linear-gradient(to right, $disabledBackground, $disabledBackground),
-          linear-gradient(to right, $disabledBackground, $disabledBackground),
-          linear-gradient(to right, $disabledBackground, $disabledBackground);
         background-position: 40px 40px, 116px 50px, 116px 80px, 116px 110px, 40px 172px, 40px 264px,
           40px 352px;
         background-size: 60px 100px, calc(70% - 176px) 20px, calc(100% - 176px) 20px,
           calc(80% - 176px) 20px, calc(100% - 80px) 72px, calc(100% - 80px) 72px,
           calc(100% - 80px) 72px;
-      }
-
-      hgroup {
-        h2 {
-          font-size: 20px;
-        }
-
-        .calendarWrap {
-          width: 60px;
-        }
-      }
-
-      .answersList {
-        li {
-          img {
-            width: 40px;
-            height: 40px;
-          }
-
-          .answer {
-
-            font-size: 16px;
-          }
-
-          .percent {
-            font-size: 20px;
-          }
-        }
-      }
-
-      button {
-        margin-top: 24px;
       }
     }
   }
