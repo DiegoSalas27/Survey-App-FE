@@ -3,6 +3,7 @@ import { Calendar, Error, Footer, Header, Loading } from '@presentation/componen
 import { useErrorHandler } from '@presentation/hooks'
 import React, { useEffect, useState } from 'react'
 import FlipMove from 'react-flip-move'
+import { useHistory } from 'react-router-dom'
 import Styles from './survey-result-styles.scss'
 
 type Props = {
@@ -37,6 +38,8 @@ const SurveyResult: React.FC<Props> = ({ loadSurveyResult }) => {
     }))
   }
 
+  const { goBack } = useHistory()
+
   return (
     <div className={Styles.surveyResultWrap}>
       <Header />
@@ -67,7 +70,7 @@ const SurveyResult: React.FC<Props> = ({ loadSurveyResult }) => {
                 </li>
               ))}
             </FlipMove>
-            <button>Vote</button>
+            <button data-testid="back-button" onClick={goBack}>Vote</button>
           </>
         )}
 
