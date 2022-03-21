@@ -57,4 +57,14 @@ describe('SurveyResult', () => {
       })
     })
   })
+
+  it('Should go to SurveyList on back button click', () => {
+    cy.visit('')
+    cy.visit('/surveys/any_id')
+    mockOk()
+    cy.wait('@request').then(res => {
+      cy.getByTestId('back-button').click()
+      testUrl('/')
+    })
+  })
 })
