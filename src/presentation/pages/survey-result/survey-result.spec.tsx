@@ -41,7 +41,7 @@ const makeSut = ({
       <Router history={history}>
         <SurveyResult
           loadSurveyResult={loadSurveyResultSpy}
-          saveSurveyResultSpy={saveSurveyResultSpy}
+          saveSurveyResult={saveSurveyResultSpy}
         />
       </Router>
     </ApiContext.Provider>
@@ -152,5 +152,21 @@ describe('SurveyResult Component', () => {
     expect(saveSurveyResultSpy.params).toEqual({
       answer: loadSurveyResultSpy.surveyResult.answers[1].answer
     })
+  })
+
+  test('Should render error on UnexpectedError', async () => {
+    const saveSurveyResultSpy = new SaveSurveyResultSpy()
+    const error = new UnexpectedError()
+    jest.spyOn(saveSurveyResultSpy, 'save').mockRejectedValueOnce(error)
+    makeSut({ saveSurveyResultSpy })
+    await waitFor(() => screen.getByTestId('survey-result'))
+
+    const answerWrap = screen.queryAllByTestId('answer-wrap')
+    fireEvent.click(answerWrap[1])
+
+    await waitFor(() => screen.getByTestId('survey-result')) // after clicking wait for component to rerender
+    expect(screen.queryByTestId('question')).not.toBeInTheDocument()
+    expect(screen.getByTestId('error')).toHaveTextContent(error.message)
+    expect(screen.queryByTestId('loading')).not.toBeInTheDocument()
   })
 })
