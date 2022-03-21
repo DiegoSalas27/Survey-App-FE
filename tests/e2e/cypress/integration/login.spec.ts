@@ -3,22 +3,17 @@ import { testInputStatus, testMainError } from '../utils/form-helpers'
 import { testUrl, testLocalStorageItem } from '../utils/helpers'
 import * as Helper from '../utils/http-mocks'
 
-const path = /signup/
-const mockEmailInUseError = (): void => Helper.mockForbiddenError(path, 'POST')
+const path = /api\/login/
+const mockInvalidCredentialsError = (): void => Helper.mockUnauthorizedError(path)
 const mockUnexpectedError = (): void => Helper.mockServerError(path, 'POST')
-
 const mockOk = (): void => {
-  cy.fixture('account').then(acc => {
-    Helper.mockOk(path, 'POST', acc)
-  })
+  Helper.mockOk(/api\/surveys/, 'GET', 'survey-list')
+  Helper.mockOk(path, 'POST', 'account', 'loginRequest')
 }
 
 const populateFields = (): void => {
-  cy.getByTestId('name').focus().type(faker.name.findName())
   cy.getByTestId('email').focus().type(faker.internet.email())
-  const pwd = faker.random.alphaNumeric(6)
-  cy.getByTestId('password').focus().type(pwd)
-  cy.getByTestId('passwordConfirm').focus().type(pwd)
+  cy.getByTestId('password').focus().type(faker.random.alphaNumeric(6))
 }
 
 const simulateValidSubmit = (): void => {
@@ -26,53 +21,41 @@ const simulateValidSubmit = (): void => {
   cy.getByTestId('submit').click()
 }
 
-describe('SignUp', () => {
+describe('login', () => {
   beforeEach(() => {
-    cy.visit('signup')
+    cy.visit('login')
   })
 
   it('Should load with correct initial state', () => {
-    cy.getByTestId('name').should('have.attr', 'readOnly')
-    testInputStatus('name-status', 'Required field', '😢')
     cy.getByTestId('email').should('have.attr', 'readOnly')
     testInputStatus('email-status', 'Required field', '😢')
     cy.getByTestId('password').should('have.attr', 'readOnly')
     testInputStatus('password-status', 'Required field', '😢')
-    cy.getByTestId('passwordConfirm').should('have.attr', 'readOnly')
-    testInputStatus('passwordConfirm-status', 'Required field', '😢')
     cy.getByTestId('submit').should('have.attr', 'disabled')
     cy.getByTestId('error-wrap').should('not.have.descendants')
   })
 
   it('Should present error state if form is invalid', () => {
-    cy.getByTestId('name').focus().type(faker.random.alphaNumeric(3))
-    testInputStatus('name-status', 'name is required', '😢')
     cy.getByTestId('email').focus().type(faker.random.word())
     testInputStatus('email-status', 'email is required', '😢')
     cy.getByTestId('password').focus().type(faker.random.alphaNumeric(3))
     testInputStatus('password-status', 'password is required', '😢')
-    cy.getByTestId('passwordConfirm').focus().type(faker.random.alphaNumeric(2))
-    testInputStatus('passwordConfirm-status', 'passwordConfirm is required', '😢')
     cy.getByTestId('submit').should('have.attr', 'disabled')
     cy.getByTestId('error-wrap').should('not.have.descendants')
   })
 
   it('Should present valid state if form is valid', () => {
-    cy.getByTestId('name').focus().type(faker.name.findName())
-    testInputStatus('name-status', "It's all good", '😃')
     cy.getByTestId('email').focus().type(faker.internet.email())
     testInputStatus('email-status', "It's all good", '😃')
-    const pwd = faker.random.alphaNumeric(6)
-    cy.getByTestId('password').focus().type(pwd)
+    cy.getByTestId('password').focus().type(faker.random.alphaNumeric(6))
     testInputStatus('password-status', "It's all good", '😃')
-    cy.getByTestId('passwordConfirm').focus().type(pwd)
-    testInputStatus('passwordConfirm-status', "It's all good", '😃')
     cy.getByTestId('submit').should('not.have.attr', 'disabled')
     cy.getByTestId('error-wrap').should('not.have.descendants')
   })
 
-  it('Should present error EmailInUseError on 403', () => {
-    mockEmailInUseError()
+  it('Should present error InvalidCredentialsError on 401', () => {
+    // url from api can be different from the local one. We want to use regex for it to find a word.
+    mockInvalidCredentialsError()
     simulateValidSubmit()
     cy.getByTestId('error-wrap')
       .getByTestId('spinner')
@@ -81,8 +64,8 @@ describe('SignUp', () => {
       .should('not.exist')
 
     cy.wait('@request').then(res => {
-      testMainError('Email already in use')
-      testUrl('/signup')
+      testMainError('Invalid Credentials')
+      testUrl('/login')
     })
   })
 
@@ -97,7 +80,7 @@ describe('SignUp', () => {
 
     cy.wait('@requestError').then(res => {
       testMainError('An error has occurred. Please try again.')
-      testUrl('/signup')
+      testUrl('/login')
     })
   })
 
@@ -110,7 +93,7 @@ describe('SignUp', () => {
       .getByTestId('main-error')
       .should('not.exist')
 
-    cy.wait('@request').then(res => {
+    cy.wait('@loginRequest').then(res => {
       cy.getByTestId('spinner').should('not.exist')
       cy.getByTestId('main-error').should('not.exist')
       testUrl('/')
@@ -122,14 +105,14 @@ describe('SignUp', () => {
     mockOk()
     populateFields()
     cy.getByTestId('submit').dblclick()
-    cy.wait('@request').then(res => {
-      cy.get('@request.all').should('have.length', 1)
+    cy.wait('@loginRequest').then(res => {
+      cy.get('@loginRequest.all').should('have.length', 1)
     })
   })
 
   it('Should not call submit if form is invalid', () => {
     mockOk()
     cy.getByTestId('email').focus().type(faker.internet.email()).type('{enter}')
-    cy.get('@request.all').should('have.length', 0)
+    cy.get('@loginRequest.all').should('have.length', 0)
   })
 })
