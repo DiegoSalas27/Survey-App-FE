@@ -1,7 +1,8 @@
 import React from 'react'
-import { Icon, IconName } from '@presentation/components'
+import { Calendar, Icon, IconName } from '@presentation/components'
 import Styles from './item-styles.scss'
 import { SurveyModel } from '@domain/models'
+import { Link } from 'react-router-dom'
 
 type Props = {
   survey: SurveyModel
@@ -14,20 +15,12 @@ const SurveyItem: React.FC<Props> = ({ survey }) => {
     <li className={Styles.surveyItemWrap}>
       <div className={Styles.surveyContent}>
         <Icon className={Styles.iconWrap} iconName={iconName} />
-        <time>
-          <span data-testid="day" className={Styles.day}>
-            {survey.date.getDate().toString().padStart(2, '0')}
-          </span>
-          <span data-testid="month" className={Styles.month}>
-            {survey.date.toLocaleString('es-PE', { month: 'short' }).slice(0, -1)}
-          </span>
-          <span data-testid="year" className={Styles.year}>
-            {survey.date.getFullYear()}
-          </span>
-        </time>
+        <Calendar date={survey.date} className={Styles.calendarWrap} />
         <p data-testid="question">{survey.question}</p>
       </div>
-      <footer>View result</footer>
+      <footer>
+        <Link data-testid="link" to={`/surveys/${survey.id}`}>View result</Link>
+      </footer>
     </li>
   )
 }
