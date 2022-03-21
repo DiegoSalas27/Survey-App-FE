@@ -1,3 +1,4 @@
+import { RemoteSurveyResultModel } from '@data/models'
 import { HttpClient, HttpStatusCode } from '@data/protocols/http'
 import { AccessDeniedError, UnexpectedError } from '@domain/errors'
 import { LoadSurveyResult } from '@domain/usecases'
@@ -16,7 +17,8 @@ export class RemoteLoadSurveyResult implements LoadSurveyResult {
         return remoteSurveyResult
           ? (Object.assign({}, remoteSurveyResult, {
               date: new Date(remoteSurveyResult.date)
-            }) as any) : null
+            }) as any)
+          : null
       case HttpStatusCode.forbidden:
         throw new AccessDeniedError()
       default:
@@ -26,15 +28,5 @@ export class RemoteLoadSurveyResult implements LoadSurveyResult {
 }
 
 export namespace RemoteLoadSurveyResult {
-  export type Model = {
-    question: string
-    answers: Array<{
-      image?: string
-      answer: string
-      count: number
-      percent: number
-      isCurrentAccountAsnwer: boolean
-    }>
-    date: string
-  }
+  export type Model = RemoteSurveyResultModel
 }
