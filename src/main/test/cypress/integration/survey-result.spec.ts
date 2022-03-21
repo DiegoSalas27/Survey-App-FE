@@ -1,8 +1,9 @@
-import { setLocalStorageItem } from '../utils/helpers'
+import { setLocalStorageItem, testUrl } from '../utils/helpers'
 import * as Helper from '../utils/http-mocks'
 
 const path = /surveys/
 const mockUnexpectedError = (): void => Helper.mockServerError(path, 'GET')
+const mockAccessDeniedError = (): void => Helper.mockForbiddenError(path, 'GET')
 const mockOk = (): void => {
   cy.fixture('survey-result').then(surveyResult => {
     Helper.mockOk(path, 'GET', surveyResult)
@@ -30,5 +31,10 @@ describe('SurveyResult', () => {
       cy.getByTestId('reload').click()
       cy.getByTestId('question').should('exist')
     })
+  })
+
+  it('Should logout on AccessDeniedError', () => {
+    mockAccessDeniedError()
+    testUrl('/login')
   })
 })
