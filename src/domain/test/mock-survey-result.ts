@@ -1,5 +1,9 @@
-import { LoadSurveyResult } from '@domain/usecases'
+import { LoadSurveyResult, SaveSurveyResult } from '@domain/usecases'
 import faker from '@faker-js/faker'
+
+export const mockSaveSurveyResultParams = (): SaveSurveyResult.Params => ({
+  answer: faker.random.words(10)
+})
 
 export const mockSurveyResultModel = (): LoadSurveyResult.Model => ({
   question: faker.random.words(10),
@@ -16,9 +20,9 @@ export const mockSurveyResultModel = (): LoadSurveyResult.Model => ({
       count: faker.datatype.number(),
       percent: faker.datatype.number(),
       isCurrentAccountAnswer: false
-    },
+    }
   ],
-  date: faker.date.recent(),
+  date: faker.date.recent()
 })
 
 export class LoadSurveyResultSpy implements LoadSurveyResult {
@@ -26,6 +30,18 @@ export class LoadSurveyResultSpy implements LoadSurveyResult {
   surveyResult = mockSurveyResultModel()
 
   async load(): Promise<LoadSurveyResult.Model> {
+    this.callsCount++
+    return this.surveyResult
+  }
+}
+
+export class SaveSurveyResultSpy implements SaveSurveyResult {
+  callsCount = 0
+  params: SaveSurveyResult.Params
+  surveyResult = mockSurveyResultModel()
+
+  async save(params: SaveSurveyResult.Params): Promise<SaveSurveyResult.Model> {
+    this.params = params
     this.callsCount++
     return this.surveyResult
   }

@@ -19,7 +19,7 @@ export const mockServerError = (url: RegExp, method: 'POST' | 'GET' | 'PUT' | 'P
   }).as('requestError')
 }
 
-export const mockForbiddenError = (url: RegExp, method: 'POST' | 'GET'): void => {
+export const mockForbiddenError = (url: RegExp, method: 'POST' | 'GET' | 'PUT' | 'PATCH'): void => {
   cy.intercept(method, url, {
     statusCode: 403,
     body: {

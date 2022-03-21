@@ -1,16 +1,21 @@
 import { RemoteSurveyResultModel } from '@data/models'
 import { HttpClient, HttpStatusCode } from '@data/protocols/http'
-import { AccessDeniedError, UnexpectedError } from '@domain/errors'
-import { LoadSurveyResult } from '@domain/usecases'
+import { AccessDeniedError } from '@domain/errors'
+import { SaveSurveyResult } from '@domain/usecases'
+import { UnexpectedError } from '../authentication/remote-authentication-protocols'
 
-export class RemoteLoadSurveyResult implements LoadSurveyResult {
+export class RemoteSaveSurveyResult implements SaveSurveyResult {
   constructor(
     private readonly url: string,
-    private readonly httpClient: HttpClient<any, RemoteLoadSurveyResult.Model>
+    private readonly httpClient: HttpClient<any, RemoteSaveSurveyResult.Model>
   ) {}
 
-  async load(): Promise<LoadSurveyResult.Model> {
-    const httpResponse = await this.httpClient.request({ url: this.url, method: 'GET' })
+  async save(params: SaveSurveyResult.Params): Promise<SaveSurveyResult.Model> {
+    const httpResponse = await this.httpClient.request({
+      url: this.url,
+      method: 'PUT',
+      body: params
+    })
     const remoteSurveyResult = httpResponse.body
     switch (httpResponse.statusCode) {
       case HttpStatusCode.ok:
@@ -27,6 +32,6 @@ export class RemoteLoadSurveyResult implements LoadSurveyResult {
   }
 }
 
-export namespace RemoteLoadSurveyResult {
+export namespace RemoteSaveSurveyResult {
   export type Model = RemoteSurveyResultModel
 }
