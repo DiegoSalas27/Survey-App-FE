@@ -23,9 +23,9 @@ const Result: React.FC<Props> = ({ surveyResult }) => {
 
         <FlipMove data-testid="answers" className={Styles.answersList}>
           {surveyResult.answers.map(answer => (
-            <Fragment key={answer.answer}>
+            <>
               <SurveyResultAnswer key={answer.answer} answer={answer} />
-            </Fragment>
+            </>
           ))}
         </FlipMove>
         <button className={Styles.button} data-testid="back-button" onClick={goBack}>
