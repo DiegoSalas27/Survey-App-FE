@@ -7,12 +7,12 @@ import Styles from './survey-result-styles.scss'
 
 type Props = {
   loadSurveyResult: LoadSurveyResult
-  saveSurveyResultSpy: SaveSurveyResult
+  saveSurveyResult: SaveSurveyResult
 }
 
-const SurveyResult: React.FC<Props> = ({ loadSurveyResult, saveSurveyResultSpy }) => {
+const SurveyResult: React.FC<Props> = ({ loadSurveyResult, saveSurveyResult }) => {
   const handleError = useErrorHandler((error: Error) => {
-    setState({ ...state, surveyResult: null, error: error.message })
+    setState({ ...state, surveyResult: null, isLoading: false, error: error.message })
   })
 
   const [state, setState] = useState({
@@ -31,7 +31,7 @@ const SurveyResult: React.FC<Props> = ({ loadSurveyResult, saveSurveyResultSpy }
 
   const onAnswer = (answer: string): void => {
     setState(prev => ({ ...prev, isLoading: true }))
-    saveSurveyResultSpy.save({ answer }).then().catch()
+    saveSurveyResult.save({ answer }).then().catch(handleError)
   }
 
   const reload = (): void => {

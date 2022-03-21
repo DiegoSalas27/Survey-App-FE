@@ -9,7 +9,7 @@ export const makeSurveyResult: React.FC = () => {
   return (
     <SurveyResult
       loadSurveyResult={makeRemoteLoadSurveyResult(id)}
-      saveSurveyResultSpy={makeRemoteSaveSurveyResult(id)}
+      saveSurveyResult={makeRemoteSaveSurveyResult(id)}
     />
   )
 }
