@@ -10,7 +10,7 @@ module.exports = {
   setupFilesAfterEnv: ['<rootDir>/src/main/config/jest-setup.ts'],
   testPathIgnorePatterns: [
     '<rootDir>/node_modules/',
-    '<rootDir>/src/main/test/cypress'
+    '<rootDir>/tests/e2e/cypress'
   ],
   testEnvironment: 'jsdom',
   moduleNameMapper: {
@@ -20,7 +20,8 @@ module.exports = {
     '@domain/(.*)$': '<rootDir>/src/domain/$1',
     '@main/(.*)$': '<rootDir>/src/main/$1',
     '\\.scss$': 'identity-obj-proxy',
-    '@validation/(.*)$': '<rootDir>/src/validation/$1'
+    '@validation/(.*)$': '<rootDir>/src/validation/$1',
+    '@tests/(.*)': '<rootDir>/tests/$1'
   },
   transform: {
     '.+\\.(ts|tsx)$': 'ts-jest'

@@ -1,47 +1,27 @@
 import faker from '@faker-js/faker'
-import {
-  HttpPostClient,
-  HttpResponse,
-  HttpStatusCode,
-  HttpPostParams,
-  HttpGetClient,
-  HttpGetParams
-} from '@data/protocols/http'
+import { HttpClient, HttpRequest, HttpResponse, HttpStatusCode } from '@data/protocols/http'
 
-export const mockPostRequest = (): HttpPostParams<any> => ({
+export const mockHttpRequest = (): HttpRequest<any> => ({
   url: faker.internet.url(),
-  body: {}
+  body: {},
+  headers: JSON.parse(faker.datatype.json()),
+  method: faker.random.arrayElement(['GET', 'POST', 'PUT', 'PATCH', 'DELETE'])
 })
 
-export const mockGetRequest = (): HttpGetParams => ({
-  url: faker.internet.url(),
-  headers: JSON.parse(faker.datatype.json())
-})
-
-export class HttpPostClientSpy<T, R> implements HttpPostClient<T, R> {
+export class HttpClientSpy<T, R> implements HttpClient<T, R> {
   url?: string
+  method?: string
   body?: T
+  headers: any
   response: HttpResponse<R> = {
     statusCode: HttpStatusCode.ok
   }
 
-  async post(params: HttpPostParams<T>): Promise<HttpResponse<R>> {
-    this.url = params.url
-    this.body = params.body
+  async request(data: HttpRequest<T>): Promise<HttpResponse<R>> {
+    this.url = data.url
+    this.method = data.method
+    this.body = data.body
+    this.headers = data.headers
     return await Promise.resolve(this.response)
-  }
-}
-
-export class HttpGetClientSpy<R = any> implements HttpGetClient<R> {
-  url: string
-  headers?: any
-  response: HttpResponse<R> = {
-    statusCode: HttpStatusCode.ok
-  }
-
-  async get(params: HttpGetParams): Promise<HttpResponse<R>> {
-    this.url = params.url
-    this.headers = params.headers
-    return this.response
   }
 }
