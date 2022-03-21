@@ -5,4 +5,9 @@ describe('Private Routes', () => {
     cy.visit('')
     testUrl('/login')
   })
+
+  it('Should logout if survey-result has no token', () => {
+    cy.visit('/surveys/any_id')
+    testUrl('/login')
+  })
 })

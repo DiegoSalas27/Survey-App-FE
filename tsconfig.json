@@ -18,7 +18,8 @@
       "@data/*": ["data/*"],
       "@infrastructure/*": ["infrastructure/*"],
       "@main/*": ["main/*"],
-      "@validation/*": ["validation/*"]
+      "@validation/*": ["validation/*"],
+      "@tests/*": ["../tests/*"]
     },
     "strictNullChecks": false,
     "forceConsistentCasingInFileNames": true,
@@ -29,11 +30,8 @@
     "isolatedModules": false,
     "noEmit": false,
     "jsx": "react-jsx",
+    "rootDirs": ["src", "tests"],
   },
-  "include": [
-    "src"
-  ],
-  "exclude": [
-    "src/main/test/cypress"
-  ]
+  "include": ["src", "tests"],
+  "exclude": ["tests/e2e/cypress"]
 }
