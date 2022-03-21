@@ -52,7 +52,6 @@ describe('SurveyList', () => {
   })
 
   it('Should present survey items', () => {
-    cy.visit('')
     mockOk()
     cy.get('li:empty').should('have.length', 4)
     cy.wait('@request').then(res => {
