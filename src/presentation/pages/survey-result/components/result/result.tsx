@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import FlipMove from 'react-flip-move'
 import { useHistory } from 'react-router-dom'
 import { Calendar } from '@presentation/components'
@@ -23,9 +23,9 @@ const Result: React.FC<Props> = ({ surveyResult }) => {
 
         <FlipMove data-testid="answers" className={Styles.answersList}>
           {surveyResult.answers.map(answer => (
-            <>
+            <Fragment key={answer.answer}>
               <SurveyResultAnswer key={answer.answer} answer={answer} />
-            </>
+            </Fragment>
           ))}
         </FlipMove>
         <button className={Styles.button} data-testid="back-button" onClick={goBack}>
