@@ -1,10 +1,9 @@
-import React, { Fragment } from 'react'
-import FlipMove from 'react-flip-move'
-import { useHistory } from 'react-router-dom'
-import { Calendar } from '@presentation/components'
-import Styles from './result-styles.scss'
 import { LoadSurveyResult } from '@domain/usecases'
+import { Calendar } from '@presentation/components'
+import React from 'react'
+import { useHistory } from 'react-router-dom'
 import { SurveyResultAnswer } from '../index'
+import Styles from './result-styles.scss'
 
 type Props = {
   surveyResult: LoadSurveyResult.Model
@@ -21,15 +20,13 @@ const Result: React.FC<Props> = ({ surveyResult }) => {
           <h2 data-testid="question">{surveyResult.question}</h2>
         </hgroup>
 
-        <FlipMove data-testid="answers" className={Styles.answersList}>
+        <ul data-testid="answers" className={Styles.answersList}>
           {surveyResult.answers.map(answer => (
-            <>
-              <SurveyResultAnswer key={answer.answer} answer={answer} />
-            </>
+            <SurveyResultAnswer key={answer.answer} answer={answer} />
           ))}
-        </FlipMove>
+        </ul>
         <button className={Styles.button} data-testid="back-button" onClick={goBack}>
-          Vote
+          Return
         </button>
       </>
     </div>
