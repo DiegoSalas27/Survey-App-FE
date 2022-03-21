@@ -2,7 +2,7 @@ import { setLocalStorageItem, testUrl } from '../utils/helpers'
 import * as Helper from '../utils/http-mocks'
 
 const path = /api\/surveys/
-const mockOk = (): void => Helper.mockOk(path, 'GET', 'survey-result')
+const mockLoadkOk = (): void => Helper.mockOk(path, 'GET', 'survey-result')
 
 describe('SurveyResult', () => {
   describe('load', () => {
@@ -28,7 +28,7 @@ describe('SurveyResult', () => {
       cy.visit('/surveys/any_id')
       cy.wait('@requestError').then(res => {
         cy.getByTestId('error').should('contain.text', 'An error has occurred. Please try again.')
-        mockOk()
+        mockLoadkOk()
         cy.getByTestId('reload').click()
         cy.getByTestId('question').should('exist')
       })
@@ -41,7 +41,7 @@ describe('SurveyResult', () => {
     })
 
     it('Should present survey result', () => {
-      mockOk()
+      mockLoadkOk()
       cy.visit('/surveys/any_id')
       cy.wait('@request').then(res => {
         cy.getByTestId('question').should('have.text', 'Question 2')
@@ -63,11 +63,38 @@ describe('SurveyResult', () => {
     })
 
     it('Should go to SurveyList on back button click', () => {
-      mockOk()
+      mockLoadkOk()
       cy.visit('')
       cy.visit('/surveys/any_id')
       cy.getByTestId('back-button').click()
       testUrl('/')
+    })
+  })
+
+  describe('save', () => {
+    const mockUnexpectedError = (): void => Helper.mockServerError(path, 'PUT')
+    const mockAccessDeniedError = (): void => Helper.mockForbiddenError(path, 'PUT')
+
+    beforeEach(() => {
+      cy.fixture('account').then(account => {
+        setLocalStorageItem('account', account)
+      })
+      mockLoadkOk()
+      cy.visit('/surveys/any_id')
+    })
+
+    it('Should present error on UnexpectedError', () => {
+      mockUnexpectedError()
+      cy.get('li:nth-child(2)').click()
+      cy.wait('@requestError').then(res => {
+        cy.getByTestId('error').should('contain.text', 'An error has occurred. Please try again.')
+      })
+    })
+
+    it('Should logout on AccessDeniedError', () => {
+      mockAccessDeniedError()
+      cy.get('li:nth-child(2)').click()
+      testUrl('/login')
     })
   })
 })
