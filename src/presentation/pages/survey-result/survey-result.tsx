@@ -1,15 +1,16 @@
-import { LoadSurveyResult } from '@domain/usecases'
+import { LoadSurveyResult, SaveSurveyResult } from '@domain/usecases'
 import { Error, Footer, Header, Loading } from '@presentation/components'
 import { useErrorHandler } from '@presentation/hooks'
 import React, { useEffect, useState } from 'react'
-import { SurveyResultData } from './components'
+import { SurveyResultContext, SurveyResultData } from './components'
 import Styles from './survey-result-styles.scss'
 
 type Props = {
   loadSurveyResult: LoadSurveyResult
+  saveSurveyResultSpy: SaveSurveyResult
 }
 
-const SurveyResult: React.FC<Props> = ({ loadSurveyResult }) => {
+const SurveyResult: React.FC<Props> = ({ loadSurveyResult, saveSurveyResultSpy }) => {
   const handleError = useErrorHandler((error: Error) => {
     setState({ ...state, surveyResult: null, error: error.message })
   })
@@ -28,6 +29,11 @@ const SurveyResult: React.FC<Props> = ({ loadSurveyResult }) => {
       .catch(handleError)
   }, [state.reload])
 
+  const onAnswer = (answer: string): void => {
+    setState(prev => ({ ...prev, isLoading: true }))
+    saveSurveyResultSpy.save({ answer }).then().catch()
+  }
+
   const reload = (): void => {
     setState(prev => ({
       surveyResult: null,
@@ -40,12 +46,15 @@ const SurveyResult: React.FC<Props> = ({ loadSurveyResult }) => {
   return (
     <div className={Styles.surveyResultWrap}>
       <Header />
-      <div data-testid="survey-result" className={Styles.contentWrap}>
-        {state.surveyResult && <SurveyResultData surveyResult={state.surveyResult} />}
+      <SurveyResultContext.Provider value={{ onAnswer }}>
+        <div data-testid="survey-result" className={Styles.contentWrap}>
+          {state.surveyResult && <SurveyResultData surveyResult={state.surveyResult} />}
 
-        {state.isLoading && <Loading />}
-        {state.error && <Error error={state.error} reload={reload} />}
-      </div>
+          {state.isLoading && <Loading />}
+          {state.error && <Error error={state.error} reload={reload} />}
+        </div>
+      </SurveyResultContext.Provider>
+
       <Footer />
     </div>
   )
