@@ -27,7 +27,7 @@ export const mockForbiddenError = (url: RegExp, method: 'POST' | 'GET'): void =>
 export const mockOk = (
   url: RegExp,
   method: 'POST' | 'GET' | 'PUT' | 'PATCH',
-  response: any
+  response: any,
 ): void => {
   cy.intercept(method, url, req => {
     req.reply(res => {

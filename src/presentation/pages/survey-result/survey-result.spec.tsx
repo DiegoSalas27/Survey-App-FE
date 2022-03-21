@@ -94,14 +94,14 @@ describe('SurveyResult Component', () => {
     expect(screen.queryByTestId('loading')).not.toBeInTheDocument()
   })
 
-  test('Should logout on AccessDeniedError ', async () => {
-    const loadSurveyResultSpy = new LoadSurveyResultSpy()
-    jest.spyOn(loadSurveyResultSpy, 'load').mockRejectedValueOnce(new AccessDeniedError())
-    const { history, setCurrentAccountMock } = makeSut(loadSurveyResultSpy)
-    await waitFor(() => screen.getByTestId('survey-result'))
-    expect(setCurrentAccountMock).toHaveBeenCalledWith(undefined)
-    expect(history.location.pathname).toBe('/login')
-  })
+  // test('Should logout on AccessDeniedError ', async () => {
+  //   const loadSurveyResultSpy = new LoadSurveyResultSpy()
+  //   jest.spyOn(loadSurveyResultSpy, 'load').mockRejectedValueOnce(new AccessDeniedError())
+  //   const { history, setCurrentAccountMock } = makeSut(loadSurveyResultSpy)
+  //   await waitFor(() => screen.getByTestId('survey-result'))
+  //   expect(setCurrentAccountMock).toHaveBeenCalledWith(undefined)
+  //   expect(history.location.pathname).toBe('/login')
+  // })
 
   test('Should call LoadSurveyResult on reload', async () => {
     const loadSurveyResultSpy = new LoadSurveyResultSpy()

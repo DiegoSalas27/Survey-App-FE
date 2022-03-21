@@ -44,7 +44,8 @@
         "import/export": "off",
         "curly": "off",
         "node/handle-callback-err": "off",
-        "react/no-unescaped-entities": "off"
+        "react/no-unescaped-entities": "off",
+        "@typescript-eslint/prefer-optional-chain": "off"
       }
     }
   ]

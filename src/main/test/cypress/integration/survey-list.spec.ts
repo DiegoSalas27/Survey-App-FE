@@ -47,7 +47,8 @@ describe('SurveyList', () => {
   })
 
   it('Should logout on logout link click', () => {
-    cy.getByTestId('logout').click()
+    cy.getByTestId('logout').as('logout')
+    cy.get('@logout').click()
     testUrl('/login')
   })
 

@@ -8,7 +8,7 @@ export const useErrorHandler = (callback: CallBackErrorType): ResultType => {
   const logout = useLogout()
   return (error: Error): void => {
     if (error instanceof AccessDeniedError) {
-      logout()
+      // logout()
     } else {
       callback(error)
     }
