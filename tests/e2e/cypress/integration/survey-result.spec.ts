@@ -74,7 +74,7 @@ describe('SurveyResult', () => {
   describe('save', () => {
     const mockUnexpectedError = (): void => Helper.mockServerError(path, 'PUT')
     const mockAccessDeniedError = (): void => Helper.mockForbiddenError(path, 'PUT')
-    const mockSaveOk = (): void => Helper.mockOk(path, 'GET', 'save-survey-result')
+    const mockSaveOk = (): void => Helper.mockOk(path, 'PUT', 'save-survey-result')
 
     beforeEach(() => {
       cy.fixture('account').then(account => {
