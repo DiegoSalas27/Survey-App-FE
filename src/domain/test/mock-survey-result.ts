@@ -20,9 +20,9 @@ export const mockSurveyResultModel = (): LoadSurveyResult.Model => ({
       count: faker.datatype.number(),
       percent: faker.datatype.number(),
       isCurrentAccountAnswer: false
-    },
+    }
   ],
-  date: faker.date.recent(),
+  date: faker.date.recent()
 })
 
 export class LoadSurveyResultSpy implements LoadSurveyResult {
@@ -36,11 +36,13 @@ export class LoadSurveyResultSpy implements LoadSurveyResult {
 }
 
 export class SaveSurveyResultSpy implements SaveSurveyResult {
+  callsCount = 0
   params: SaveSurveyResult.Params
   surveyResult = mockSurveyResultModel()
 
   async save(params: SaveSurveyResult.Params): Promise<SaveSurveyResult.Model> {
     this.params = params
+    this.callsCount++
     return this.surveyResult
   }
 }
