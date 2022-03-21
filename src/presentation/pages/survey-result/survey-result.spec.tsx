@@ -7,7 +7,13 @@ import {
   SaveSurveyResultSpy
 } from '@domain/test'
 import { ApiContext } from '@presentation/context'
-import { fireEvent, render, screen, waitFor } from '@testing-library/react'
+import {
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+  waitForElementToBeRemoved
+} from '@testing-library/react'
 import { createMemoryHistory, MemoryHistory } from 'history'
 import React from 'react'
 import { Router } from 'react-router-dom'
@@ -192,7 +198,7 @@ describe('SurveyResult Component', () => {
     await waitFor(() => screen.getByTestId('survey-result'))
     const answerWrap = screen.queryAllByTestId('answer-wrap')
     fireEvent.click(answerWrap[1])
-    await waitFor(() => screen.getByTestId('survey-result'))
+    await waitForElementToBeRemoved(() => screen.getByTestId('loading'))
     expect(screen.getByTestId('day')).toHaveTextContent('20')
     expect(screen.getByTestId('year')).toHaveTextContent('2018')
     expect(screen.getByTestId('question')).toHaveTextContent(surveyResult.question)
@@ -210,5 +216,15 @@ describe('SurveyResult Component', () => {
     expect(percents[0]).toHaveTextContent(`${surveyResult.answers[0].percent}%`)
     expect(percents[1]).toHaveTextContent(`${surveyResult.answers[1].percent}%`)
     expect(screen.queryByTestId('loading')).not.toBeInTheDocument()
+  })
+
+  test('Should prevent multiple answer click', async () => {
+    const { saveSurveyResultSpy } = makeSut()
+    await waitFor(() => screen.getByTestId('survey-result'))
+    const answerWrap = screen.queryAllByTestId('answer-wrap')
+    fireEvent.click(answerWrap[1])
+    fireEvent.click(answerWrap[1])
+    await waitFor(() => screen.getByTestId('survey-result'))
+    expect(saveSurveyResultSpy.callsCount).toBe(1)
   })
 })
