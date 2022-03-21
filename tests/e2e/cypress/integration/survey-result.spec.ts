@@ -2,7 +2,7 @@ import { setLocalStorageItem, testUrl } from '../utils/helpers'
 import * as Helper from '../utils/http-mocks'
 
 const path = /api\/surveys/
-const mockLoadkOk = (): void => Helper.mockOk(path, 'GET', 'survey-result')
+const mockLoadkOk = (): void => Helper.mockOk(path, 'GET', 'load-survey-result')
 
 describe('SurveyResult', () => {
   describe('load', () => {
@@ -74,6 +74,7 @@ describe('SurveyResult', () => {
   describe('save', () => {
     const mockUnexpectedError = (): void => Helper.mockServerError(path, 'PUT')
     const mockAccessDeniedError = (): void => Helper.mockForbiddenError(path, 'PUT')
+    const mockSaveOk = (): void => Helper.mockOk(path, 'GET', 'save-survey-result')
 
     beforeEach(() => {
       cy.fixture('account').then(account => {
@@ -95,6 +96,28 @@ describe('SurveyResult', () => {
       mockAccessDeniedError()
       cy.get('li:nth-child(2)').click()
       testUrl('/login')
+    })
+
+    it('Should present survey result', () => {
+      mockSaveOk()
+      cy.get('li:nth-child(2)').click()
+      cy.wait('@request').then(res => {
+        cy.getByTestId('question').should('have.text', 'Other Question')
+        cy.getByTestId('day').should('have.text', '23')
+        cy.getByTestId('month').should('have.text', 'Mar')
+        cy.getByTestId('year').should('have.text', '2020')
+
+        cy.get('li:nth-child(1)').then(li => {
+          assert.equal(li.find('[data-testid="answer"]').text(), 'other_answer')
+          assert.equal(li.find('[data-testid="percent"]').text(), '50%')
+          assert.equal(li.find('[data-testid="image"]').attr('src'), 'other_image')
+        })
+        cy.get('li:nth-child(2)').then(li => {
+          assert.equal(li.find('[data-testid="answer"]').text(), 'other_answer_2')
+          assert.equal(li.find('[data-testid="percent"]').text(), '50%')
+          assert.notExists(li.find('[data-testid="image"]'))
+        })
+      })
     })
   })
 })
